@@ -419,6 +419,7 @@ class Choices {
    */
   render() {
     this.currentState = this.store.state;
+
     const stateChanged = (
       this.currentState.choices !== this.prevState.choices ||
       this.currentState.groups !== this.prevState.groups ||
@@ -456,9 +457,9 @@ class Choices {
           choiceListFragment = this.createChoicesFragment(activePlaceholders, choiceListFragment);
         }
         choiceListFragment = this.createGroupsFragment(
-            activeGroups,
-            activeChoices,
-            choiceListFragment,
+          activeGroups,
+          activeChoices,
+          choiceListFragment,
         );
       } else if (activeChoices.length >= 1) {
         choiceListFragment = this.createChoicesFragment(activeChoices, choiceListFragment);
@@ -485,14 +486,14 @@ class Choices {
 
         if (this.isSearching) {
           notice = isType('Function', this.config.noResultsText) ?
-              this.config.noResultsText() :
-              this.config.noResultsText;
+            this.config.noResultsText() :
+            this.config.noResultsText;
 
           dropdownItem = this._getTemplate('notice', notice, 'no-results');
         } else {
           notice = isType('Function', this.config.noChoicesText) ?
-              this.config.noChoicesText() :
-              this.config.noChoicesText;
+            this.config.noChoicesText() :
+            this.config.noChoicesText;
 
           dropdownItem = this._getTemplate('notice', notice, 'no-choices');
         }
@@ -896,7 +897,7 @@ class Choices {
     });
   }
 
-    /**
+  /**
    * Select placeholder choice
    */
   _selectPlaceholderChoice() {
@@ -936,7 +937,7 @@ class Choices {
     const itemId = element.parentNode.getAttribute('data-id');
     const itemToRemove = activeItems.find(item => item.id === parseInt(itemId, 10));
 
-   // Remove item associated with button
+    // Remove item associated with button
     this._removeItem(itemToRemove);
     this._triggerChange(itemToRemove.value);
 
@@ -1563,7 +1564,7 @@ class Choices {
           // If text element, we only want to focus the input
           this.input.focus();
         } else {
-            // If a select box, we want to show the dropdown
+          // If a select box, we want to show the dropdown
           this.showDropdown(true);
         }
       }
@@ -1608,7 +1609,7 @@ class Choices {
     }
   }
 
-    /**
+  /**
    * Mouse over (hover) event
    * @param  {Object} e Event
    * @return
@@ -2236,7 +2237,7 @@ class Choices {
           placeholderChoice.disabled,
           undefined,
           undefined,
-            /* placeholder */ true,
+          /* placeholder */ true,
         );
       }
 
