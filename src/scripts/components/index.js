@@ -1,4 +1,3 @@
-import Core from './core';
 import ChoicesInput from './choices-input';
 import ChoicesSelectOne from './choices-select-one';
 import ChoicesSelectMultiple from './choices-select-multiple';
@@ -10,7 +9,6 @@ import WrappedInput from './wrapped-input';
 import WrappedSelect from './wrapped-select';
 
 export {
-  Core,
   ChoicesInput,
   ChoicesSelectOne,
   ChoicesSelectMultiple,
