@@ -35,8 +35,6 @@ describe('templates', () => {
           const actualOutput = templates.containerOuter(
             classes,
             direction,
-            isSelectElement,
-            isSelectOneElement,
             searchEnabled,
             passedElementType,
           );
@@ -69,8 +67,6 @@ describe('templates', () => {
           const actualOutput = templates.containerOuter(
             classes,
             direction,
-            isSelectElement,
-            isSelectOneElement,
             searchEnabled,
             passedElementType,
           );
@@ -84,8 +80,6 @@ describe('templates', () => {
 
       describe('select one element', () => {
         it('returns expected html', () => {
-          const isSelectElement = true;
-          const isSelectOneElement = true;
           const searchEnabled = false;
           const passedElementType = 'select-one';
 
@@ -104,8 +98,6 @@ describe('templates', () => {
           const actualOutput = templates.containerOuter(
             classes,
             direction,
-            isSelectElement,
-            isSelectOneElement,
             searchEnabled,
             passedElementType,
           );
@@ -120,8 +112,6 @@ describe('templates', () => {
 
     describe('non select element', () => {
       it('returns expected html', () => {
-        const isSelectElement = false;
-        const isSelectOneElement = false;
         const searchEnabled = false;
         const passedElementType = 'text';
 
@@ -138,8 +128,6 @@ describe('templates', () => {
         const actualOutput = templates.containerOuter(
           classes,
           direction,
-          isSelectElement,
-          isSelectOneElement,
           searchEnabled,
           passedElementType,
         );
