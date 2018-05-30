@@ -85,13 +85,6 @@ export default class ChoicesSelectMultiple {
     this._onMouseOver = this._onMouseOver.bind(this);
     this._onFormReset = this._onFormReset.bind(this);
 
-    // If element has already been initialised with ChoicesSelectMultiple, fail silently
-    if (this.passedElement.element.getAttribute('data-choice') === 'active') {
-      console.warn(
-        'Trying to initialise ChoicesSelectMultiple on element already initialised',
-      );
-    }
-
     // Let's go
     this.init();
   }
@@ -182,7 +175,7 @@ export default class ChoicesSelectMultiple {
     this._prevState = this._currentState;
   }
 
-  highlightItem(item, runEvent = true) {
+  highlightItem(item, triggerEvent = true) {
     if (!item) {
       return this;
     }
@@ -192,7 +185,7 @@ export default class ChoicesSelectMultiple {
 
     this._store.dispatch(highlightItem(id, true));
 
-    if (runEvent) {
+    if (triggerEvent) {
       this.passedElement.triggerEvent(EVENTS.highlightItem, {
         id,
         value,
@@ -249,12 +242,12 @@ export default class ChoicesSelectMultiple {
     return this;
   }
 
-  removeHighlightedItems(runEvent = false) {
+  removeHighlightedItems(triggerEvent = false) {
     this._store.highlightedActiveItems.forEach(item => {
       this._removeItem(item);
       // If this action was performed by the user
       // trigger the event
-      if (runEvent) {
+      if (triggerEvent) {
         this._triggerChange(item.value);
       }
     });
@@ -373,7 +366,7 @@ export default class ChoicesSelectMultiple {
   }
 
   clearInput() {
-    this.input.clear(true);
+    this.input.clear();
 
     if (this._canSearch) {
       this._isSearching = false;

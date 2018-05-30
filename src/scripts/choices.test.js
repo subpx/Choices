@@ -1352,7 +1352,7 @@ describe('choices', () => {
         instance._triggerChange.reset();
       });
 
-      describe('runEvent parameter being passed', () => {
+      describe('triggerEvent parameter being passed', () => {
         beforeEach(() => {
           output = instance.removeHighlightedItems();
         });
@@ -1364,7 +1364,7 @@ describe('choices', () => {
         });
       });
 
-      describe('runEvent parameter not being passed', () => {
+      describe('triggerEvent parameter not being passed', () => {
         beforeEach(() => {
           output = instance.removeHighlightedItems(true);
         });

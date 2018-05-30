@@ -94,20 +94,9 @@ export default class ChoicesSelectOne {
     this._onMouseOver = this._onMouseOver.bind(this);
     this._onFormReset = this._onFormReset.bind(this);
 
-    // If element has already been initialised with ChoicesSelectOne, fail silently
-    if (this.passedElement.element.getAttribute('data-choice') === 'active') {
-      console.warn(
-        'Trying to initialise ChoicesSelectOne on element already initialised',
-      );
-    }
-
     // Let's go
     this.init();
   }
-
-  /* ========================================
-  =            Public functions            =
-  ======================================== */
 
   init() {
     if (this.initialised) {
@@ -196,7 +185,7 @@ export default class ChoicesSelectOne {
     this._prevState = this._currentState;
   }
 
-  highlightItem(item, runEvent = true) {
+  highlightItem(item, triggerEvent = true) {
     if (!item) {
       return this;
     }
@@ -206,7 +195,7 @@ export default class ChoicesSelectOne {
 
     this._store.dispatch(highlightItem(id, true));
 
-    if (runEvent) {
+    if (triggerEvent) {
       this.passedElement.triggerEvent(EVENTS.highlightItem, {
         id,
         value,
@@ -263,12 +252,12 @@ export default class ChoicesSelectOne {
     return this;
   }
 
-  removeHighlightedItems(runEvent = false) {
+  removeHighlightedItems(triggerEvent = false) {
     this._store.highlightedActiveItems.forEach(item => {
       this._removeItem(item);
       // If this action was performed by the user
       // trigger the event
-      if (runEvent) {
+      if (triggerEvent) {
         this._triggerChange(item.value);
       }
     });
@@ -407,12 +396,6 @@ export default class ChoicesSelectOne {
 
     return this;
   }
-
-  /* =====  End of Public functions  ====== */
-
-  /* =============================================
-  =                Private functions            =
-  ============================================= */
 
   _createGroupsFragment(groups, choices, fragment) {
     const groupFragment = fragment || document.createDocumentFragment();
@@ -1675,6 +1658,4 @@ export default class ChoicesSelectOne {
       }
     }
   }
-
-  /* =====  End of Private functions  ====== */
 }

@@ -709,7 +709,7 @@ export default class Choices {
   destroy(): void;
 
   /** Select item (a selected item can be deleted) */
-  highlightItem(item: Element, runEvent?: boolean): this;
+  highlightItem(item: Element, triggerEvent?: boolean): this;
 
   /** Deselect item */
   unhighlightItem(item: Element): this;
@@ -747,7 +747,7 @@ export default class Choices {
    *
    * **Input types affected:** text, select-multiple
    */
-  removeHighlightedItems(runEvent?: boolean): this;
+  removeHighlightedItems(triggerEvent?: boolean): this;
 
 
   /**

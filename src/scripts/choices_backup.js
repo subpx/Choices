@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js';
 
-import '../lib/polyfills';
-import Store from '../store/store';
+import './lib/polyfills';
+import Store from './store/store';
 import {
   Dropdown,
   Container,
@@ -9,23 +9,23 @@ import {
   List,
   WrappedInput,
   WrappedSelect,
-} from '../components';
+} from './components';
 import {
   DEFAULT_CONFIG,
   DEFAULT_CLASSNAMES,
   EVENTS,
   KEY_CODES,
-} from '../constants';
-import { TEMPLATES } from '../templates';
+} from './constants';
+import { TEMPLATES } from './templates';
 import {
   addChoice,
   filterChoices,
   activateChoices,
   clearChoices,
-} from '../actions/choices';
-import { addItem, removeItem, highlightItem } from '../actions/items';
-import { addGroup } from '../actions/groups';
-import { clearAll, resetTo } from '../actions/misc';
+} from './actions/choices';
+import { addItem, removeItem, highlightItem } from './actions/items';
+import { addGroup } from './actions/groups';
+import { clearAll, resetTo } from './actions/misc';
 import {
   isScrolledIntoView,
   getAdjacentEl,
@@ -42,7 +42,7 @@ import {
   isIE11,
   existsInArray,
   cloneObject,
-} from '../lib/utils';
+} from './lib/utils';
 
 /**
  * Choices
@@ -239,7 +239,7 @@ export default class Choices {
     this._prevState = this._currentState;
   }
 
-  highlightItem(item, runEvent = true) {
+  highlightItem(item, triggerEvent = true) {
     if (!item) {
       return this;
     }
@@ -249,7 +249,7 @@ export default class Choices {
 
     this._store.dispatch(highlightItem(id, true));
 
-    if (runEvent) {
+    if (triggerEvent) {
       this.passedElement.triggerEvent(EVENTS.highlightItem, {
         id,
         value,
@@ -306,12 +306,12 @@ export default class Choices {
     return this;
   }
 
-  removeHighlightedItems(runEvent = false) {
+  removeHighlightedItems(triggerEvent = false) {
     this._store.highlightedActiveItems.forEach(item => {
       this._removeItem(item);
       // If this action was performed by the user
       // trigger the event
-      if (runEvent) {
+      if (triggerEvent) {
         this._triggerChange(item.value);
       }
     });

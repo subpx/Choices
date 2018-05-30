@@ -89,13 +89,6 @@ export default class ChoicesInput {
     this._onMouseOver = this._onMouseOver.bind(this);
     this._onFormReset = this._onFormReset.bind(this);
 
-    // If element has already been initialised with ChoicesInput, fail silently
-    if (this.passedElement.element.getAttribute('data-choice') === 'active') {
-      console.warn(
-        'Trying to initialise ChoicesInput on element already initialised',
-      );
-    }
-
     // Let's go
     this.init();
   }
@@ -191,7 +184,7 @@ export default class ChoicesInput {
     this._prevState = this._currentState;
   }
 
-  highlightItem(item, runEvent = true) {
+  highlightItem(item, triggerEvent = true) {
     if (!item) {
       return this;
     }
@@ -201,7 +194,7 @@ export default class ChoicesInput {
 
     this._store.dispatch(highlightItem(id, true));
 
-    if (runEvent) {
+    if (triggerEvent) {
       this.passedElement.triggerEvent(EVENTS.highlightItem, {
         id,
         value,
@@ -258,12 +251,12 @@ export default class ChoicesInput {
     return this;
   }
 
-  removeHighlightedItems(runEvent = false) {
+  removeHighlightedItems(triggerEvent = false) {
     this._store.highlightedActiveItems.forEach(item => {
       this._removeItem(item);
       // If this action was performed by the user
       // trigger the event
-      if (runEvent) {
+      if (triggerEvent) {
         this._triggerChange(item.value);
       }
     });
@@ -311,7 +304,12 @@ export default class ChoicesInput {
   }
 
   toggleDropdown() {
-    this.dropdown.isActive ? this.hideDropdown() : this.showDropdown();
+    if (this.dropdown.isActive) {
+      this.hideDropdown();
+    } else {
+      this.showDropdown();
+    }
+
     return this;
   }
 
@@ -340,7 +338,7 @@ export default class ChoicesInput {
   }
 
   clearInput() {
-    this.input.clear(true);
+    this.input.clear();
     return this;
   }
 
