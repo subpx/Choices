@@ -824,7 +824,7 @@ example.setChoiceByValue('Two'); // Choice with value of 'Two' has now been sele
 
 
 ### clearInput();
-**Input types affected:** `text`
+**Input types affected:** `text`, `select-one`, `select-multiple`
 
 **Usage:** Clear input of any user inputted text.
 

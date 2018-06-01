@@ -1,16 +1,9 @@
-import Fuse from 'fuse.js';
-
 import '../lib/polyfills';
 import Store from '../store/store';
 import { Dropdown, Container, Input, List, WrappedInput } from '../components';
 import { EVENTS, KEY_CODES } from '../constants';
 import { TEMPLATES } from '../templates';
-import {
-  addChoice,
-  filterChoices,
-  activateChoices,
-  clearChoices,
-} from '../actions/choices';
+import { addChoice, clearChoices } from '../actions/choices';
 import { addItem, removeItem, highlightItem } from '../actions/items';
 import { addGroup } from '../actions/groups';
 import { clearAll, resetTo } from '../actions/misc';
@@ -24,7 +17,6 @@ import {
   generateId,
   findAncestorByAttrName,
   regexFilter,
-  fetchFromObject,
   isIE11,
   existsInArray,
   cloneObject,
@@ -57,7 +49,6 @@ export default class ChoicesInput {
     this._currentState = {};
     this._prevState = {};
     this._currentValue = '';
-    this._canSearch = this.config.searchEnabled;
     this._isScrollingOnIe = false;
     this._highlightPosition = 0;
     this._wasTap = true;
@@ -67,8 +58,6 @@ export default class ChoicesInput {
     this._idNames = {
       itemChoice: 'item-choice',
     };
-    // Assign preset choices from passed object
-    this._presetChoices = this.config.choices;
     // Assign preset items from passed object first
     this._presetItems = this.config.items;
     // Then add any values passed from attribute
@@ -273,7 +262,7 @@ export default class ChoicesInput {
       this.dropdown.show();
       this.containerOuter.open(this.dropdown.distanceFromTopWindow());
 
-      if (!preventInputFocus && this._canSearch) {
+      if (!preventInputFocus) {
         this.input.focus();
       }
 
@@ -292,7 +281,7 @@ export default class ChoicesInput {
       this.dropdown.hide();
       this.containerOuter.close();
 
-      if (!preventInputBlur && this._canSearch) {
+      if (!preventInputBlur) {
         this.input.removeActiveDescendant();
         this.input.blur();
       }
@@ -534,100 +523,6 @@ export default class ChoicesInput {
     };
   }
 
-  _ajaxCallback() {
-    return (results, value, label) => {
-      if (!results || !value) {
-        return;
-      }
-
-      const parsedResults = isType('Object', results) ? [results] : results;
-
-      if (
-        parsedResults &&
-        isType('Array', parsedResults) &&
-        parsedResults.length
-      ) {
-        // Remove loading states/text
-        this._handleLoadingState(false);
-        // Add each result as a choice
-        parsedResults.forEach(result => {
-          if (result.choices) {
-            this._addGroup({
-              group: result,
-              id: result.id || null,
-              valueKey: value,
-              labelKey: label,
-            });
-          } else {
-            this._addChoice({
-              value: fetchFromObject(result, value),
-              label: fetchFromObject(result, label),
-              isSelected: result.selected,
-              isDisabled: result.disabled,
-              customProperties: result.customProperties,
-              placeholder: result.placeholder,
-            });
-          }
-        });
-      } else {
-        // No results, remove loading state
-        this._handleLoadingState(false);
-      }
-    };
-  }
-
-  _searchChoices(value) {
-    const newValue = isType('String', value) ? value.trim() : value;
-    const currentValue = isType('String', this._currentValue)
-      ? this._currentValue.trim()
-      : this._currentValue;
-
-    if (newValue.length < 1 && newValue === `${currentValue} `) {
-      return 0;
-    }
-
-    // If new value matches the desired length and is not the same as the current value with a space
-    const haystack = this._store.searchableChoices;
-    const needle = newValue;
-    const keys = [...this.config.searchFields];
-    const options = Object.assign(this.config.fuseOptions, {
-      keys,
-    });
-    const fuse = new Fuse(haystack, options);
-    const results = fuse.search(needle);
-
-    this._currentValue = newValue;
-    this._highlightPosition = 0;
-    this._isSearching = true;
-    this._store.dispatch(filterChoices(results));
-
-    return results.length;
-  }
-
-  _handleSearch(value) {
-    if (!value || !this.input.isFocussed) {
-      return;
-    }
-
-    const choices = this._store.choices;
-    const { searchFloor, searchChoices } = this.config;
-    const hasUnactiveChoices = choices.some(option => !option.active);
-
-    // Check that we have a value to search and the input was an alphanumeric character
-    if (value && value.length >= searchFloor) {
-      const resultCount = searchChoices ? this._searchChoices(value) : 0;
-      // Trigger search event
-      this.passedElement.triggerEvent(EVENTS.search, {
-        value,
-        resultCount,
-      });
-    } else if (hasUnactiveChoices) {
-      // Otherwise reset choices to active
-      this._isSearching = false;
-      this._store.dispatch(activateChoices(true));
-    }
-  }
-
   _addEventListeners() {
     document.addEventListener('keyup', this._onKeyUp);
     document.addEventListener('keydown', this._onKeyDown);
@@ -694,7 +589,6 @@ export default class ChoicesInput {
     const onAKey = () => {
       // If CTRL + A or CMD + A have been pressed and there are items to select
       if (ctrlDownKey && hasItems) {
-        this._canSearch = false;
         if (
           this.config.removeItems &&
           !this.input.value &&
@@ -756,7 +650,6 @@ export default class ChoicesInput {
       // If up or down key is pressed, traverse through options
       if (hasActiveDropdown) {
         this.showDropdown();
-        this._canSearch = false;
 
         const directionInt =
           keyCode === downKey || keyCode === pageDownKey ? 1 : -1;
@@ -863,8 +756,6 @@ export default class ChoicesInput {
     } else {
       this.hideDropdown(true);
     }
-
-    this._canSearch = this.config.searchEnabled;
   }
 
   _onTouchMove() {
@@ -1248,7 +1139,7 @@ export default class ChoicesInput {
       element: this._getTemplate(
         'containerOuter',
         this._direction,
-        this.config.searchEnabled,
+        false,
         'text',
       ),
       classNames: this.config.classNames,

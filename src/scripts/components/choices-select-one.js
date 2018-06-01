@@ -11,7 +11,7 @@ import {
   activateChoices,
   clearChoices,
 } from '../actions/choices';
-import { addItem, removeItem, highlightItem } from '../actions/items';
+import { addItem, removeItem } from '../actions/items';
 import { addGroup } from '../actions/groups';
 import { clearAll, resetTo } from '../actions/misc';
 import {
@@ -185,82 +185,10 @@ export default class ChoicesSelectOne {
     this._prevState = this._currentState;
   }
 
-  highlightItem(item, triggerEvent = true) {
-    if (!item) {
-      return this;
-    }
-
-    const { id, groupId = -1, value = '', label = '' } = item;
-    const group = groupId >= 0 ? this._store.getGroupById(groupId) : null;
-
-    this._store.dispatch(highlightItem(id, true));
-
-    if (triggerEvent) {
-      this.passedElement.triggerEvent(EVENTS.highlightItem, {
-        id,
-        value,
-        label,
-        groupValue: group && group.value ? group.value : null,
-      });
-    }
-
-    return this;
-  }
-
-  unhighlightItem(item) {
-    if (!item) {
-      return this;
-    }
-
-    const { id, groupId = -1, value = '', label = '' } = item;
-    const group = groupId >= 0 ? this._store.getGroupById(groupId) : null;
-
-    this._store.dispatch(highlightItem(id, false));
-    this.passedElement.triggerEvent(EVENTS.highlightItem, {
-      id,
-      value,
-      label,
-      groupValue: group && group.value ? group.value : null,
-    });
-
-    return this;
-  }
-
-  highlightAll() {
-    this._store.items.forEach(item => this.highlightItem(item));
-    return this;
-  }
-
-  unhighlightAll() {
-    this._store.items.forEach(item => this.unhighlightItem(item));
-    return this;
-  }
-
-  removeActiveItemsByValue(value) {
-    this._store.activeItems
-      .filter(item => item.value === value)
-      .forEach(item => this._removeItem(item));
-
-    return this;
-  }
-
   removeActiveItems(excludedId) {
     this._store.activeItems
       .filter(({ id }) => id !== excludedId)
       .forEach(item => this._removeItem(item));
-
-    return this;
-  }
-
-  removeHighlightedItems(triggerEvent = false) {
-    this._store.highlightedActiveItems.forEach(item => {
-      this._removeItem(item);
-      // If this action was performed by the user
-      // trigger the event
-      if (triggerEvent) {
-        this._triggerChange(item.value);
-      }
-    });
 
     return this;
   }
@@ -301,11 +229,6 @@ export default class ChoicesSelectOne {
       this.passedElement.triggerEvent(EVENTS.hideDropdown, {});
     });
 
-    return this;
-  }
-
-  toggleDropdown() {
-    this.dropdown.isActive ? this.hideDropdown() : this.showDropdown();
     return this;
   }
 
@@ -593,30 +516,6 @@ export default class ChoicesSelectOne {
     if (hasActiveDropdown) {
       this.hideDropdown(true);
       this.containerOuter.focus();
-    }
-  }
-
-  _handleBackspace(activeItems) {
-    if (!this.config.removeItems || !activeItems) {
-      return;
-    }
-
-    const lastItem = activeItems[activeItems.length - 1];
-    const hasHighlightedItems = activeItems.some(item => item.highlighted);
-
-    // If editing the last item is allowed and there are not other selected items,
-    // we can edit the item value. Otherwise if we can remove items, remove all selected items
-    if (this.config.editItems && !hasHighlightedItems && lastItem) {
-      this.input.value = lastItem.value;
-      this.input.setWidth();
-      this._removeItem(lastItem);
-      this._triggerChange(lastItem.value);
-    } else {
-      if (!hasHighlightedItems) {
-        // Highlight last item if none already highlighted
-        this.highlightItem(lastItem, false);
-      }
-      this.removeHighlightedItems(true);
     }
   }
 
@@ -1037,12 +936,6 @@ export default class ChoicesSelectOne {
         this.hideDropdown();
       }
     } else {
-      const hasHighlightedItems = this._store.highlightedActiveItems;
-
-      if (hasHighlightedItems) {
-        this.unhighlightAll();
-      }
-
       this.containerOuter.removeFocusState();
       this.hideDropdown(true);
     }
