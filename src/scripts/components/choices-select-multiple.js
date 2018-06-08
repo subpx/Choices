@@ -1132,7 +1132,7 @@ export default class ChoicesSelectMultiple {
       return;
     }
 
-    let passedEl = el;
+    let choiceToHighlight = el;
     const highlightedChoices = Array.from(
       this.dropdown.element.querySelectorAll(
         `.${this.config.classNames.highlightedState}`,
@@ -1145,31 +1145,31 @@ export default class ChoicesSelectMultiple {
       choice.setAttribute('aria-selected', 'false');
     });
 
-    if (passedEl) {
-      this._highlightPosition = choices.indexOf(passedEl);
+    if (choiceToHighlight) {
+      this._highlightPosition = choices.indexOf(choiceToHighlight);
     } else {
       // Highlight choice based on last known highlight location
       if (choices.length > this._highlightPosition) {
         // If we have an option to highlight
-        passedEl = choices[this._highlightPosition];
+        choiceToHighlight = choices[this._highlightPosition];
       } else {
         // Otherwise highlight the option before
-        passedEl = choices[choices.length - 1];
+        choiceToHighlight = choices[choices.length - 1];
       }
 
-      if (!passedEl) {
-        passedEl = choices[0];
+      if (!choiceToHighlight) {
+        choiceToHighlight = choices[0];
       }
     }
 
-    passedEl.classList.add(this.config.classNames.highlightedState);
-    passedEl.setAttribute('aria-selected', 'true');
+    choiceToHighlight.classList.add(this.config.classNames.highlightedState);
+    choiceToHighlight.setAttribute('aria-selected', 'true');
 
     if (this.dropdown.isActive) {
       // IE11 ignores aria-label and blocks virtual keyboard
       // if aria-activedescendant is set without a dropdown
-      this.input.setActiveDescendant(passedEl.id);
-      this.containerOuter.setActiveDescendant(passedEl.id);
+      this.input.setActiveDescendant(choiceToHighlight.id);
+      this.containerOuter.setActiveDescendant(choiceToHighlight.id);
     }
   }
 
