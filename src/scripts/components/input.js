@@ -77,14 +77,8 @@ export default class Input {
    * @return {Object} Class instance
    * @public
    */
-  clear(setWidth = true) {
-    if (this.element.value) {
-      this.element.value = '';
-    }
-
-    if (setWidth) {
-      this.setWidth();
-    }
+  clear() {
+    this.element.value = '';
 
     return this;
   }

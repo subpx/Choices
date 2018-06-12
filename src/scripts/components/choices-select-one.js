@@ -1,28 +1,16 @@
-import Fuse from 'fuse.js';
-
-import '../lib/polyfills';
 import Store from '../store/store';
-import { Dropdown, Container, Input, List, WrappedSelect } from '../components';
+import { Dropdown, Container, Input, List } from '../components';
+import ChoicesSelect from './choices-select';
 import { EVENTS, KEY_CODES } from '../constants';
-import { TEMPLATES } from '../templates';
-import {
-  addChoice,
-  filterChoices,
-  activateChoices,
-  clearChoices,
-} from '../actions/choices';
-import { addItem, removeItem } from '../actions/items';
+import { addChoice, activateChoices } from '../actions/choices';
+import { addItem } from '../actions/items';
 import { addGroup } from '../actions/groups';
-import { clearAll, resetTo } from '../actions/misc';
 import {
   isScrolledIntoView,
   getAdjacentEl,
   getType,
   isType,
-  strToEl,
-  extend,
   sortByScore,
-  generateId,
   findAncestorByAttrName,
   fetchFromObject,
   isIE11,
@@ -33,19 +21,9 @@ import {
  * ChoicesSelectOne
  * @author Josh Johnson<josh@joshuajohnson.co.uk>
  */
-export default class ChoicesSelectOne {
+export default class ChoicesSelectOne extends ChoicesSelect {
   constructor(element, config) {
-    this.initialised = false;
-    this.config = config;
-
-    if (!['auto', 'always'].includes(this.config.renderSelectedChoices)) {
-      this.config.renderSelectedChoices = 'auto';
-    }
-
-    this.passedElement = new WrappedSelect({
-      element,
-      classNames: this.config.classNames,
-    });
+    super(element, config);
 
     if (this.config.shouldSortItems === true) {
       if (!this.config.silent) {
@@ -58,30 +36,7 @@ export default class ChoicesSelectOne {
     }
 
     this._store = new Store(this.render);
-    this._initialState = {};
-    this._currentState = {};
-    this._prevState = {};
-    this._currentValue = '';
-    this._canSearch = this.config.searchEnabled;
-    this._isScrollingOnIe = false;
-    this._highlightPosition = 0;
-    this._wasTap = true;
-    this._placeholderValue = null;
-    this._baseId = generateId(this.passedElement.element, 'choices-');
-    this._direction = this.passedElement.element.getAttribute('dir') || 'ltr';
-    this._idNames = {
-      itemChoice: 'item-choice',
-    };
-    // Assign preset choices from passed object
-    this._presetChoices = this.config.choices;
-    // Assign preset items from passed object first
-    this._presetItems = this.config.items;
-    // Then add any values passed from attribute
-    if (this.passedElement.value) {
-      this._presetItems = this._presetItems.concat(
-        this.passedElement.value.split(this.config.delimiter),
-      );
-    }
+
     this.render = this.render.bind(this);
     this._onFocus = this._onFocus.bind(this);
     this._onBlur = this._onBlur.bind(this);
@@ -168,7 +123,6 @@ export default class ChoicesSelectOne {
       this._currentState.choices !== this._prevState.choices ||
       this._currentState.groups !== this._prevState.groups ||
       this._currentState.items !== this._prevState.items;
-
     const shouldRenderItems =
       this._currentState.items !== this._prevState.items;
 
@@ -183,68 +137,6 @@ export default class ChoicesSelectOne {
     }
 
     this._prevState = this._currentState;
-  }
-
-  removeActiveItems(excludedId) {
-    this._store.activeItems
-      .filter(({ id }) => id !== excludedId)
-      .forEach(item => this._removeItem(item));
-
-    return this;
-  }
-
-  showDropdown(preventInputFocus) {
-    if (this.dropdown.isActive) {
-      return this;
-    }
-
-    requestAnimationFrame(() => {
-      this.dropdown.show();
-      this.containerOuter.open(this.dropdown.distanceFromTopWindow());
-
-      if (!preventInputFocus && this._canSearch) {
-        this.input.focus();
-      }
-
-      this.passedElement.triggerEvent(EVENTS.showDropdown, {});
-    });
-
-    return this;
-  }
-
-  hideDropdown(preventInputBlur) {
-    if (!this.dropdown.isActive) {
-      return this;
-    }
-
-    requestAnimationFrame(() => {
-      this.dropdown.hide();
-      this.containerOuter.close();
-
-      if (!preventInputBlur && this._canSearch) {
-        this.input.removeActiveDescendant();
-        this.input.blur();
-      }
-
-      this.passedElement.triggerEvent(EVENTS.hideDropdown, {});
-    });
-
-    return this;
-  }
-
-  getValue(valueOnly = false) {
-    const values = this._store.activeItems.reduce((selectedItems, item) => {
-      const itemValue = valueOnly ? item.value : item;
-      selectedItems.push(itemValue);
-      return selectedItems;
-    }, []);
-
-    return values[0];
-  }
-
-  setValue(args) {
-    [...args].forEach(value => this._setChoiceOrItem(value));
-    return this;
   }
 
   setChoiceByValue(value) {
@@ -293,13 +185,8 @@ export default class ChoicesSelectOne {
     return this;
   }
 
-  clearStore() {
-    this._store.dispatch(clearAll());
-    return this;
-  }
-
   clearInput() {
-    this.input.clear(false);
+    this.input.clear();
 
     if (this._canSearch) {
       this._isSearching = false;
@@ -426,16 +313,6 @@ export default class ChoicesSelectOne {
     return itemListFragment;
   }
 
-  _triggerChange(value) {
-    if (value === undefined || value === null) {
-      return;
-    }
-
-    this.passedElement.triggerEvent(EVENTS.change, {
-      value,
-    });
-  }
-
   _selectPlaceholderChoice() {
     const placeholderChoice = this._store.placeholderChoice;
 
@@ -493,7 +370,7 @@ export default class ChoicesSelectOne {
     });
 
     if (choice && !choice.selected && !choice.disabled) {
-      const canAddItem = this._canAddItem(activeItems, choice.value);
+      const canAddItem = this._canAddItem(choice.value);
 
       if (canAddItem.response) {
         this._addItem({
@@ -536,11 +413,11 @@ export default class ChoicesSelectOne {
       }
     } else {
       this.containerOuter.removeLoadingState();
-      placeholderItem.innerHTML = this._placeholderValue || '';
+      placeholderItem.innerHTML = '';
     }
   }
 
-  _canAddItem(activeItems, value) {
+  _canAddItem(value) {
     const canAddItem = true;
     const notice = isType('Function', this.config.addItemText)
       ? this.config.addItemText(value)
@@ -594,32 +471,6 @@ export default class ChoicesSelectOne {
         this._handleLoadingState(false);
       }
     };
-  }
-
-  _searchChoices(value) {
-    const newValue = isType('String', value) ? value.trim() : value;
-    const currentValue = isType('String', this._currentValue)
-      ? this._currentValue.trim()
-      : this._currentValue;
-
-    if (newValue.length < 1 && newValue === `${currentValue} `) {
-      return 0;
-    }
-
-    // If new value matches the desired length and is not the same as the current value with a space
-    const haystack = this._store.searchableChoices;
-    const needle = newValue;
-    const keys = [...this.config.searchFields];
-    const options = Object.assign(this.config.fuseOptions, { keys });
-    const fuse = new Fuse(haystack, options);
-    const results = fuse.search(needle);
-
-    this._currentValue = newValue;
-    this._highlightPosition = 0;
-    this._isSearching = true;
-    this._store.dispatch(filterChoices(results));
-
-    return results.length;
   }
 
   _handleSearch(value) {
@@ -849,8 +700,7 @@ export default class ChoicesSelectOne {
     }
 
     const value = this.input.value;
-    const activeItems = this._store.activeItems;
-    const canAddItem = this._canAddItem(activeItems, value);
+    const canAddItem = this._canAddItem(value);
     const backKey = KEY_CODES.BACK_KEY;
     const deleteKey = KEY_CODES.DELETE_KEY;
 
@@ -975,10 +825,6 @@ export default class ChoicesSelectOne {
     }
   }
 
-  _onFormReset() {
-    this._store.dispatch(resetTo(this._initialState));
-  }
-
   _highlightChoice(el = null) {
     const choices = Array.from(
       this.dropdown.element.querySelectorAll('[data-choice-selectable]'),
@@ -1096,34 +942,6 @@ export default class ChoicesSelectOne {
     return this;
   }
 
-  _removeItem(item) {
-    if (!item || !isType('Object', item)) {
-      return this;
-    }
-
-    const { id, value, label, choiceId, groupId } = item;
-    const group = groupId >= 0 ? this._store.getGroupById(groupId) : null;
-
-    this._store.dispatch(removeItem(id, choiceId));
-
-    if (group && group.value) {
-      this.passedElement.triggerEvent(EVENTS.removeItem, {
-        id,
-        value,
-        label,
-        groupValue: group.value,
-      });
-    } else {
-      this.passedElement.triggerEvent(EVENTS.removeItem, {
-        id,
-        value,
-        label,
-      });
-    }
-
-    return this;
-  }
-
   _addChoice({
     value,
     label = null,
@@ -1172,10 +990,6 @@ export default class ChoicesSelectOne {
     }
   }
 
-  _clearChoices() {
-    this._store.dispatch(clearChoices());
-  }
-
   _addGroup({ group, id, valueKey = 'value', labelKey = 'label' }) {
     const groupChoices = isType('Object', group)
       ? group.choices
@@ -1207,29 +1021,6 @@ export default class ChoicesSelectOne {
         addGroup(group.label, group.id, false, group.disabled),
       );
     }
-  }
-
-  _getTemplate(template, ...args) {
-    if (!template) {
-      return null;
-    }
-
-    const { templates, classNames } = this.config;
-    return templates[template].call(this, classNames, ...args);
-  }
-
-  _createTemplates() {
-    const { callbackOnCreateTemplates } = this.config;
-    let userTemplates = {};
-
-    if (
-      callbackOnCreateTemplates &&
-      isType('Function', callbackOnCreateTemplates)
-    ) {
-      userTemplates = callbackOnCreateTemplates.call(this, strToEl);
-    }
-
-    this.config.templates = extend(TEMPLATES, userTemplates);
   }
 
   _createElements() {
@@ -1501,8 +1292,7 @@ export default class ChoicesSelectOne {
       choiceListFragment.childNodes &&
       choiceListFragment.childNodes.length > 0
     ) {
-      const activeItems = this._store.activeItems;
-      const canAddItem = this._canAddItem(activeItems, this.input.value);
+      const canAddItem = this._canAddItem(this.input.value);
 
       // ...and we can select them
       if (canAddItem.response) {

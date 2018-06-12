@@ -6,7 +6,6 @@ import { TEMPLATES } from '../templates';
 import { addChoice, clearChoices } from '../actions/choices';
 import { addItem, removeItem, highlightItem } from '../actions/items';
 import { addGroup } from '../actions/groups';
-import { clearAll, resetTo } from '../actions/misc';
 import {
   isScrolledIntoView,
   getAdjacentEl,
@@ -321,13 +320,9 @@ export default class ChoicesInput {
     return this;
   }
 
-  clearStore() {
-    this._store.dispatch(clearAll());
-    return this;
-  }
-
   clearInput() {
     this.input.clear();
+    this.input.setWidth();
     return this;
   }
 
@@ -877,10 +872,6 @@ export default class ChoicesInput {
       this._isScrollingOnIe = false;
       this.input.element.focus();
     }
-  }
-
-  _onFormReset() {
-    this._store.dispatch(resetTo(this._initialState));
   }
 
   _highlightChoice(el = null) {
