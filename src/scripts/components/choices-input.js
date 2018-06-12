@@ -629,11 +629,8 @@ export default class ChoicesInput {
   }
 
   _onEscapeKey() {
-    const hasActiveDropdown = this.dropdown.isActive;
-    if (hasActiveDropdown) {
-      this.hideDropdown(true);
-      this.containerOuter.focus();
-    }
+    this.hideDropdown(true);
+    this.containerOuter.focus();
   }
 
   _onEnterKey = ({ target }) => {
@@ -703,15 +700,17 @@ export default class ChoicesInput {
       return;
     }
 
-    const backKey = KEY_CODES.BACK_KEY;
-    const deleteKey = KEY_CODES.DELETE_KEY;
-    const enterKey = KEY_CODES.ENTER_KEY;
-    const aKey = KEY_CODES.A_KEY;
-    const escapeKey = KEY_CODES.ESC_KEY;
-    const upKey = KEY_CODES.UP_KEY;
-    const downKey = KEY_CODES.DOWN_KEY;
-    const pageUpKey = KEY_CODES.PAGE_UP_KEY;
-    const pageDownKey = KEY_CODES.PAGE_DOWN_KEY;
+    const {
+      BACK_KEY: backKey,
+      DELETE_KEY: deleteKey,
+      ENTER_KEY: enterKey,
+      A_KEY: aKey,
+      ESC_KEY: escapeKey,
+      UP_KEY: upKey,
+      DOWN_KEY: downKey,
+      PAGE_UP_KEY: pageUpKey,
+      PAGE_DOWN_KEY: pageDownKey,
+    } = KEY_CODES;
 
     // Map keys to key actions
     const keyDownActions = {
