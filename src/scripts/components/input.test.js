@@ -235,27 +235,11 @@ describe('components/input', () => {
   });
 
   describe('clear', () => {
-    let setWidthStub;
-
-    beforeEach(() => {
-      setWidthStub = stub(instance, 'setWidth');
-    });
-
-    afterEach(() => {
-      setWidthStub.restore();
-    });
-
-    it("removes the element's value if it has one", () => {
+    it("removes the element's value", () => {
       instance.element.value = 'test';
       expect(instance.element.value).to.equal('test');
       instance.clear();
       expect(instance.element.value).to.equal('');
-    });
-
-    it("sets the element's width if flag passed", () => {
-      expect(setWidthStub.callCount).to.equal(0);
-      instance.clear(true);
-      expect(setWidthStub.callCount).to.equal(1);
     });
 
     it('returns instance', () => {

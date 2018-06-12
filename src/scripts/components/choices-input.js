@@ -6,6 +6,7 @@ import { TEMPLATES } from '../templates';
 import { addChoice, clearChoices } from '../actions/choices';
 import { addItem, removeItem, highlightItem } from '../actions/items';
 import { addGroup } from '../actions/groups';
+import { resetTo } from '../actions/misc';
 import {
   isScrolledIntoView,
   getAdjacentEl,
@@ -872,6 +873,10 @@ export default class ChoicesInput {
       this._isScrollingOnIe = false;
       this.input.element.focus();
     }
+  }
+
+  _onFormReset() {
+    this._store.dispatch(resetTo(this._initialState));
   }
 
   _highlightChoice(el = null) {
