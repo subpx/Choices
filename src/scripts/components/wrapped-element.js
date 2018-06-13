@@ -11,6 +11,10 @@ export default class WrappedElement {
     this.isDisabled = false;
   }
 
+  get type() {
+    return this.element.type;
+  }
+
   get value() {
     return this.element.value;
   }

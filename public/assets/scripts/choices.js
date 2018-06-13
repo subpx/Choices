@@ -624,8 +624,8 @@ var SCROLLING_SPEED = exports.SCROLLING_SPEED = 4;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(33)('wks');
-var uid = __webpack_require__(17);
+var store = __webpack_require__(32)('wks');
+var uid = __webpack_require__(16);
 var Symbol = __webpack_require__(3).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
@@ -723,7 +723,7 @@ exports.WrappedSelect = _wrappedSelect2.default;
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(7);
-var createDesc = __webpack_require__(16);
+var createDesc = __webpack_require__(15);
 module.exports = __webpack_require__(9) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
@@ -758,7 +758,7 @@ exports.f = __webpack_require__(9) ? Object.defineProperty : function defineProp
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(15);
+var isObject = __webpack_require__(14);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -770,7 +770,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(26)(function () {
+module.exports = !__webpack_require__(25)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -846,58 +846,6 @@ var clearChoices = exports.clearChoices = function clearChoices() {
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.highlightItem = exports.removeItem = exports.addItem = undefined;
-
-var _constants = __webpack_require__(1);
-
-var addItem = exports.addItem = function addItem(_ref) {
-  var value = _ref.value,
-      label = _ref.label,
-      id = _ref.id,
-      choiceId = _ref.choiceId,
-      groupId = _ref.groupId,
-      customProperties = _ref.customProperties,
-      placeholder = _ref.placeholder,
-      keyCode = _ref.keyCode;
-  return {
-    type: _constants.ACTION_TYPES.ADD_ITEM,
-    value: value,
-    label: label,
-    id: id,
-    choiceId: choiceId,
-    groupId: groupId,
-    customProperties: customProperties,
-    placeholder: placeholder,
-    keyCode: keyCode
-  };
-};
-
-var removeItem = exports.removeItem = function removeItem(id, choiceId) {
-  return {
-    type: _constants.ACTION_TYPES.REMOVE_ITEM,
-    id: id,
-    choiceId: choiceId
-  };
-};
-
-var highlightItem = exports.highlightItem = function highlightItem(id, highlighted) {
-  return {
-    type: _constants.ACTION_TYPES.HIGHLIGHT_ITEM,
-    id: id,
-    highlighted: highlighted
-  };
-};
-
-/***/ }),
-/* 13 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -909,7 +857,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -920,7 +868,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -929,7 +877,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -943,7 +891,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -954,25 +902,25 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(33)('keys');
-var uid = __webpack_require__(17);
+var shared = __webpack_require__(32)('keys');
+var uid = __webpack_require__(16);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -984,7 +932,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _redux = __webpack_require__(37);
+var _redux = __webpack_require__(36);
 
 var _index = __webpack_require__(75);
 
@@ -1212,7 +1160,7 @@ var Store = function () {
 exports.default = Store;
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1323,7 +1271,7 @@ var TEMPLATES = exports.TEMPLATES = {
 exports.default = TEMPLATES;
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1332,23 +1280,50 @@ exports.default = TEMPLATES;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addGroup = undefined;
+exports.highlightItem = exports.removeItem = exports.addItem = undefined;
 
 var _constants = __webpack_require__(1);
 
-/* eslint-disable import/prefer-default-export */
-var addGroup = exports.addGroup = function addGroup(value, id, active, disabled) {
+var addItem = exports.addItem = function addItem(_ref) {
+  var value = _ref.value,
+      label = _ref.label,
+      id = _ref.id,
+      choiceId = _ref.choiceId,
+      groupId = _ref.groupId,
+      customProperties = _ref.customProperties,
+      placeholder = _ref.placeholder,
+      keyCode = _ref.keyCode;
   return {
-    type: _constants.ACTION_TYPES.ADD_GROUP,
+    type: _constants.ACTION_TYPES.ADD_ITEM,
     value: value,
+    label: label,
     id: id,
-    active: active,
-    disabled: disabled
+    choiceId: choiceId,
+    groupId: groupId,
+    customProperties: customProperties,
+    placeholder: placeholder,
+    keyCode: keyCode
+  };
+};
+
+var removeItem = exports.removeItem = function removeItem(id, choiceId) {
+  return {
+    type: _constants.ACTION_TYPES.REMOVE_ITEM,
+    id: id,
+    choiceId: choiceId
+  };
+};
+
+var highlightItem = exports.highlightItem = function highlightItem(id, highlighted) {
+  return {
+    type: _constants.ACTION_TYPES.HIGHLIGHT_ITEM,
+    id: id,
+    highlighted: highlighted
   };
 };
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1359,21 +1334,21 @@ __webpack_require__(44);
 __webpack_require__(68);
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = false;
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
 var core = __webpack_require__(4);
 var hide = __webpack_require__(6);
-var redefine = __webpack_require__(28);
-var ctx = __webpack_require__(29);
+var redefine = __webpack_require__(27);
+var ctx = __webpack_require__(28);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -1415,7 +1390,7 @@ module.exports = $export;
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -1428,10 +1403,10 @@ module.exports = function (exec) {
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(15);
+var isObject = __webpack_require__(14);
 var document = __webpack_require__(3).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -1441,13 +1416,13 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3);
 var hide = __webpack_require__(6);
 var has = __webpack_require__(10);
-var SRC = __webpack_require__(17)('src');
+var SRC = __webpack_require__(16)('src');
 var TO_STRING = 'toString';
 var $toString = Function[TO_STRING];
 var TPL = ('' + $toString).split(TO_STRING);
@@ -1478,7 +1453,7 @@ __webpack_require__(4).inspectSource = function (it) {
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
@@ -1504,19 +1479,19 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(56);
-var defined = __webpack_require__(14);
+var defined = __webpack_require__(13);
 module.exports = function (it) {
   return IObject(defined(it));
 };
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -1527,11 +1502,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(13);
+var toInteger = __webpack_require__(12);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -1539,7 +1514,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(4);
@@ -1551,13 +1526,13 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(24) ? 'pure' : 'global',
+  mode: __webpack_require__(23) ? 'pure' : 'global',
   copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
 });
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -1567,7 +1542,7 @@ module.exports = (
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var def = __webpack_require__(7).f;
@@ -1580,18 +1555,18 @@ module.exports = function (it, tag, stat) {
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(14);
+var defined = __webpack_require__(13);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2403,7 +2378,7 @@ if (false) {
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports) {
 
 var g;
@@ -2430,7 +2405,55 @@ module.exports = g;
 
 
 /***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addGroup = undefined;
+
+var _constants = __webpack_require__(1);
+
+/* eslint-disable import/prefer-default-export */
+var addGroup = exports.addGroup = function addGroup(value, id, active, disabled) {
+  return {
+    type: _constants.ACTION_TYPES.ADD_GROUP,
+    value: value,
+    id: id,
+    active: active,
+    disabled: disabled
+  };
+};
+
+/***/ }),
 /* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var clearAll = exports.clearAll = function clearAll() {
+  return {
+    type: 'CLEAR_ALL'
+  };
+};
+
+var resetTo = exports.resetTo = function resetTo(state) {
+  return {
+    type: 'RESET_TO',
+    state: state
+  };
+};
+
+/***/ }),
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2448,17 +2471,19 @@ var _fuse2 = _interopRequireDefault(_fuse);
 
 var _components = __webpack_require__(5);
 
-var _templates = __webpack_require__(21);
+var _templates = __webpack_require__(20);
 
 var _constants = __webpack_require__(1);
 
 var _utils = __webpack_require__(0);
 
-var _items = __webpack_require__(12);
+var _items = __webpack_require__(21);
+
+var _groups = __webpack_require__(38);
 
 var _choices = __webpack_require__(11);
 
-var _misc = __webpack_require__(40);
+var _misc = __webpack_require__(39);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2619,6 +2644,197 @@ var ChoicesSelect = function () {
       this.config.templates = (0, _utils.extend)(_templates.TEMPLATES, userTemplates);
     }
   }, {
+    key: '_addChoice',
+    value: function _addChoice(_ref2) {
+      var value = _ref2.value,
+          _ref2$label = _ref2.label,
+          label = _ref2$label === undefined ? null : _ref2$label,
+          _ref2$isSelected = _ref2.isSelected,
+          isSelected = _ref2$isSelected === undefined ? false : _ref2$isSelected,
+          _ref2$isDisabled = _ref2.isDisabled,
+          isDisabled = _ref2$isDisabled === undefined ? false : _ref2$isDisabled,
+          _ref2$groupId = _ref2.groupId,
+          groupId = _ref2$groupId === undefined ? -1 : _ref2$groupId,
+          _ref2$customPropertie = _ref2.customProperties,
+          customProperties = _ref2$customPropertie === undefined ? null : _ref2$customPropertie,
+          _ref2$placeholder = _ref2.placeholder,
+          placeholder = _ref2$placeholder === undefined ? false : _ref2$placeholder,
+          _ref2$keyCode = _ref2.keyCode,
+          keyCode = _ref2$keyCode === undefined ? null : _ref2$keyCode;
+
+      if (typeof value === 'undefined' || value === null) {
+        return;
+      }
+
+      // Generate unique id
+      var choices = this._store.choices;
+      var choiceLabel = label || value;
+      var choiceId = choices ? choices.length + 1 : 1;
+      var choiceElementId = this._baseId + '-' + this._idNames.itemChoice + '-' + choiceId;
+
+      this._store.dispatch((0, _choices.addChoice)({
+        value: value,
+        label: choiceLabel,
+        id: choiceId,
+        groupId: groupId,
+        disabled: isDisabled,
+        elementId: choiceElementId,
+        customProperties: customProperties,
+        placeholder: placeholder,
+        keyCode: keyCode
+      }));
+
+      if (isSelected) {
+        this._addItem({
+          value: value,
+          label: choiceLabel,
+          choiceId: choiceId,
+          customProperties: customProperties,
+          placeholder: placeholder,
+          keyCode: keyCode
+        }, true);
+      }
+    }
+  }, {
+    key: '_addGroup',
+    value: function _addGroup(_ref3) {
+      var _this5 = this;
+
+      var group = _ref3.group,
+          id = _ref3.id,
+          _ref3$valueKey = _ref3.valueKey,
+          valueKey = _ref3$valueKey === undefined ? 'value' : _ref3$valueKey,
+          _ref3$labelKey = _ref3.labelKey,
+          labelKey = _ref3$labelKey === undefined ? 'label' : _ref3$labelKey;
+
+      var groupChoices = (0, _utils.isType)('Object', group) ? group.choices : Array.from(group.getElementsByTagName('OPTION'));
+      var groupId = id || Math.floor(new Date().valueOf() * Math.random());
+      var isDisabled = group.disabled ? group.disabled : false;
+
+      if (groupChoices) {
+        this._store.dispatch((0, _groups.addGroup)(group.label, groupId, true, isDisabled));
+
+        var addGroupChoices = function addGroupChoices(choice) {
+          var isOptDisabled = choice.disabled || choice.parentNode && choice.parentNode.disabled;
+
+          _this5._addChoice({
+            value: choice[valueKey],
+            label: (0, _utils.isType)('Object', choice) ? choice[labelKey] : choice.innerHTML,
+            isSelected: choice.selected,
+            isDisabled: isOptDisabled,
+            groupId: groupId,
+            customProperties: choice.customProperties,
+            placeholder: choice.placeholder
+          });
+        };
+
+        groupChoices.forEach(addGroupChoices);
+      } else {
+        this._store.dispatch((0, _groups.addGroup)(group.label, group.id, false, group.disabled));
+      }
+    }
+  }, {
+    key: '_addPredefinedItems',
+    value: function _addPredefinedItems() {
+      var _this6 = this;
+
+      var handlePresetItem = function handlePresetItem(item) {
+        var itemType = (0, _utils.getType)(item);
+        if (itemType === 'Object' && item.value) {
+          _this6._addItem({
+            value: item.value,
+            label: item.label,
+            choiceId: item.id,
+            customProperties: item.customProperties,
+            placeholder: item.placeholder
+          });
+        } else if (itemType === 'String') {
+          _this6._addItem({
+            value: item
+          });
+        }
+      };
+
+      this._presetItems.forEach(function (item) {
+        return handlePresetItem(item);
+      });
+    }
+  }, {
+    key: '_addItem',
+    value: function _addItem(_ref4) {
+      var value = _ref4.value,
+          _ref4$label = _ref4.label,
+          label = _ref4$label === undefined ? null : _ref4$label,
+          _ref4$choiceId = _ref4.choiceId,
+          choiceId = _ref4$choiceId === undefined ? -1 : _ref4$choiceId,
+          _ref4$groupId = _ref4.groupId,
+          groupId = _ref4$groupId === undefined ? -1 : _ref4$groupId,
+          _ref4$customPropertie = _ref4.customProperties,
+          customProperties = _ref4$customPropertie === undefined ? null : _ref4$customPropertie,
+          _ref4$placeholder = _ref4.placeholder,
+          placeholder = _ref4$placeholder === undefined ? false : _ref4$placeholder,
+          _ref4$keyCode = _ref4.keyCode,
+          keyCode = _ref4$keyCode === undefined ? null : _ref4$keyCode;
+      var removeActiveItems = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.passedElement.type === 'select-one';
+
+      var passedValue = (0, _utils.isType)('String', value) ? value.trim() : value;
+
+      var passedKeyCode = keyCode;
+      var passedCustomProperties = customProperties;
+      var items = this._store.items;
+      var passedLabel = label || passedValue;
+      var passedOptionId = parseInt(choiceId, 10) || -1;
+      var group = groupId >= 0 ? this._store.getGroupById(groupId) : null;
+      var id = items ? items.length + 1 : 1;
+
+      // If a prepended value has been passed, prepend it
+      if (this.config.prependValue) {
+        passedValue = this.config.prependValue + passedValue.toString();
+      }
+
+      // If an appended value has been passed, append it
+      if (this.config.appendValue) {
+        passedValue += this.config.appendValue.toString();
+      }
+
+      this._store.dispatch((0, _items.addItem)({
+        value: passedValue,
+        label: passedLabel,
+        id: id,
+        choiceId: passedOptionId,
+        groupId: groupId,
+        customProperties: customProperties,
+        placeholder: placeholder,
+        keyCode: passedKeyCode
+      }));
+
+      if (removeActiveItems) {
+        this.removeActiveItems(id);
+      }
+
+      // Trigger change event
+      if (group && group.value) {
+        this.passedElement.triggerEvent(_constants.EVENTS.addItem, {
+          id: id,
+          value: passedValue,
+          label: passedLabel,
+          customProperties: passedCustomProperties,
+          groupValue: group.value,
+          keyCode: passedKeyCode
+        });
+      } else {
+        this.passedElement.triggerEvent(_constants.EVENTS.addItem, {
+          id: id,
+          value: passedValue,
+          label: passedLabel,
+          customProperties: passedCustomProperties,
+          keyCode: passedKeyCode
+        });
+      }
+
+      return this;
+    }
+  }, {
     key: '_removeItem',
     value: function _removeItem(item) {
       if (!item || !(0, _utils.isType)('Object', item)) {
@@ -2688,6 +2904,55 @@ var ChoicesSelect = function () {
       });
     }
   }, {
+    key: '_highlightChoice',
+    value: function _highlightChoice() {
+      var _this7 = this;
+
+      var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      var choices = Array.from(this.dropdown.element.querySelectorAll('[data-choice-selectable]'));
+
+      if (!choices.length) {
+        return;
+      }
+
+      var choiceToHighlight = el;
+      var highlightedChoices = Array.from(this.dropdown.element.querySelectorAll('.' + this.config.classNames.highlightedState));
+
+      // Remove any highlighted choices
+      highlightedChoices.forEach(function (choice) {
+        choice.classList.remove(_this7.config.classNames.highlightedState);
+        choice.setAttribute('aria-selected', 'false');
+      });
+
+      if (choiceToHighlight) {
+        this._highlightPosition = choices.indexOf(choiceToHighlight);
+      } else {
+        // Highlight choice based on last known highlight location
+        if (choices.length > this._highlightPosition) {
+          // If we have an option to highlight
+          choiceToHighlight = choices[this._highlightPosition];
+        } else {
+          // Otherwise highlight the option before
+          choiceToHighlight = choices[choices.length - 1];
+        }
+
+        if (!choiceToHighlight) {
+          choiceToHighlight = choices[0];
+        }
+      }
+
+      choiceToHighlight.classList.add(this.config.classNames.highlightedState);
+      choiceToHighlight.setAttribute('aria-selected', 'true');
+
+      if (this.dropdown.isActive) {
+        // IE11 ignores aria-label and blocks virtual keyboard
+        // if aria-activedescendant is set without a dropdown
+        this.input.setActiveDescendant(choiceToHighlight.id);
+        this.containerOuter.setActiveDescendant(choiceToHighlight.id);
+      }
+    }
+  }, {
     key: '_searchChoices',
     value: function _searchChoices(value) {
       var newValue = (0, _utils.isType)('String', value) ? value.trim() : value;
@@ -2713,9 +2978,416 @@ var ChoicesSelect = function () {
       return results.length;
     }
   }, {
+    key: '_handleSearch',
+    value: function _handleSearch(value) {
+      if (!value || !this.input.isFocussed) {
+        return;
+      }
+
+      var choices = this._store.choices;
+      var _config2 = this.config,
+          searchFloor = _config2.searchFloor,
+          searchChoices = _config2.searchChoices;
+
+      var hasUnactiveChoices = choices.some(function (option) {
+        return !option.active;
+      });
+
+      // Check that we have a value to search and the input was an alphanumeric character
+      if (value && value.length >= searchFloor) {
+        var resultCount = searchChoices ? this._searchChoices(value) : 0;
+        // Trigger search event
+        this.passedElement.triggerEvent(_constants.EVENTS.search, {
+          value: value,
+          resultCount: resultCount
+        });
+      } else if (hasUnactiveChoices) {
+        // Otherwise reset choices to active
+        this._isSearching = false;
+        this._store.dispatch((0, _choices.activateChoices)(true));
+      }
+    }
+  }, {
+    key: '_findAndSelectChoiceByValue',
+    value: function _findAndSelectChoiceByValue(val) {
+      var _this8 = this;
+
+      var choices = this._store.choices;
+      // Check 'value' property exists and the choice isn't already selected
+      var foundChoice = choices.find(function (choice) {
+        return _this8.config.itemComparer(choice.value, val);
+      });
+
+      if (foundChoice && !foundChoice.selected) {
+        this._addItem({
+          value: foundChoice.value,
+          label: foundChoice.label,
+          id: foundChoice.id,
+          groupId: foundChoice.groupId,
+          customProperties: foundChoice.customProperties,
+          placeholder: foundChoice.placeholder,
+          keyCode: foundChoice.keyCode
+        });
+      }
+    }
+  }, {
+    key: '_onTouchMove',
+    value: function _onTouchMove() {
+      if (this._wasTap === true) {
+        this._wasTap = false;
+      }
+    }
+  }, {
+    key: '_onBlur',
+    value: function _onBlur(_ref5) {
+      var target = _ref5.target;
+
+      // If target is something that concerns us
+      if (this.containerOuter.element.contains(target) && !this._isScrollingOnIe) {
+        this.containerOuter.removeFocusState();
+        if (target === this.input.element || target === this.containerOuter.element && !this._canSearch) {
+          this.hideDropdown(true);
+        }
+      } else {
+        // On IE11, clicking the scollbar blurs our input and thus
+        // closes the dropdown. To stop this, we refocus our input
+        // if we know we are on IE *and* are scrolling.
+        this._isScrollingOnIe = false;
+        this.input.element.focus();
+      }
+    }
+  }, {
     key: '_onFormReset',
     value: function _onFormReset() {
       this._store.dispatch((0, _misc.resetTo)(this._initialState));
+    }
+  }, {
+    key: '_onMouseOver',
+    value: function _onMouseOver(_ref6) {
+      var target = _ref6.target;
+
+      var targetWithinDropdown = target === this.dropdown || this.dropdown.element.contains(target);
+      var shouldHighlightChoice = targetWithinDropdown && target.hasAttribute('data-choice');
+
+      if (shouldHighlightChoice) {
+        this._highlightChoice(target);
+      }
+    }
+  }, {
+    key: 'clearInput',
+    value: function clearInput() {
+      var setWidth = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.passedElement.type === 'select-multiple';
+
+      this.input.clear();
+
+      if (setWidth) {
+        this.input.setWidth();
+      }
+
+      if (this._canSearch) {
+        this._isSearching = false;
+        this._store.dispatch((0, _choices.activateChoices)(true));
+      }
+
+      return this;
+    }
+  }, {
+    key: 'setChoiceByValue',
+    value: function setChoiceByValue(value) {
+      var _this9 = this;
+
+      // If only one value has been passed, convert to array
+      var choiceValue = (0, _utils.isType)('Array', value) ? value : [value];
+
+      // Loop through each value and
+      choiceValue.forEach(function (val) {
+        return _this9._findAndSelectChoiceByValue(val);
+      });
+
+      return this;
+    }
+  }, {
+    key: 'setChoices',
+    value: function setChoices() {
+      var choices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+      var _this10 = this;
+
+      var label = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+      var replaceChoices = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+      if (!choices.length || !value) {
+        return this;
+      }
+
+      // Clear choices if needed
+      if (replaceChoices) {
+        this._clearChoices();
+      }
+
+      this.containerOuter.removeLoadingState();
+      var addGroupsAndChoices = function addGroupsAndChoices(groupOrChoice) {
+        if (groupOrChoice.choices) {
+          _this10._addGroup({
+            group: groupOrChoice,
+            id: groupOrChoice.id || null,
+            valueKey: value,
+            labelKey: label
+          });
+        } else {
+          _this10._addChoice({
+            value: groupOrChoice[value],
+            label: groupOrChoice[label],
+            isSelected: groupOrChoice.selected,
+            isDisabled: groupOrChoice.disabled,
+            customProperties: groupOrChoice.customProperties,
+            placeholder: groupOrChoice.placeholder
+          });
+        }
+      };
+
+      choices.forEach(addGroupsAndChoices);
+
+      return this;
+    }
+  }, {
+    key: '_setChoiceOrItem',
+    value: function _setChoiceOrItem(item) {
+      var _this11 = this;
+
+      var itemType = (0, _utils.getType)(item).toLowerCase();
+      var handleType = {
+        object: function object() {
+          if (!item.value) {
+            return;
+          }
+
+          _this11._addChoice({
+            value: item.value,
+            label: item.label,
+            isSelected: true,
+            isDisabled: false,
+            customProperties: item.customProperties,
+            placeholder: item.placeholder
+          });
+        },
+        string: function string() {
+          _this11._addChoice({
+            value: item,
+            label: item,
+            isSelected: true,
+            isDisabled: false
+          });
+        }
+      };
+
+      handleType[itemType]();
+    }
+  }, {
+    key: '_createItemsFragment',
+    value: function _createItemsFragment(items) {
+      var _this12 = this;
+
+      var fragment = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      // Create fragment to add elements to
+      var _config3 = this.config,
+          shouldSortItems = _config3.shouldSortItems,
+          sortFn = _config3.sortFn,
+          removeItemButton = _config3.removeItemButton;
+
+      var itemListFragment = fragment || document.createDocumentFragment();
+
+      // If sorting is enabled, filter items
+      if (shouldSortItems) {
+        items.sort(sortFn);
+      }
+
+      // Update the options of the hidden input
+      this.passedElement.options = items;
+
+      var addItemToFragment = function addItemToFragment(item) {
+        // Create new list element
+        var listItem = _this12._getTemplate('item', item, removeItemButton);
+        // Append it to list
+        itemListFragment.appendChild(listItem);
+      };
+
+      // Add each list item to list
+      items.forEach(function (item) {
+        return addItemToFragment(item);
+      });
+
+      return itemListFragment;
+    }
+  }, {
+    key: '_renderItems',
+    value: function _renderItems() {
+      var activeItems = this._store.activeItems || [];
+      this.itemList.clear();
+
+      if (activeItems.length) {
+        // Create a fragment to store our list items
+        // (so we don't have to update the DOM for each item)
+        var itemListFragment = this._createItemsFragment(activeItems);
+
+        // If we have items to add, append them
+        if (itemListFragment.childNodes) {
+          this.itemList.append(itemListFragment);
+        }
+      }
+    }
+  }, {
+    key: '_ajaxCallback',
+    value: function _ajaxCallback() {
+      var _this13 = this;
+
+      var selectPlaceholderChoice = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.passedElement.type === 'select-one';
+
+      return function (results, value, label) {
+        if (!results || !value) {
+          return;
+        }
+
+        var parsedResults = (0, _utils.isType)('Object', results) ? [results] : results;
+
+        if (parsedResults && (0, _utils.isType)('Array', parsedResults) && parsedResults.length) {
+          // Remove loading states/text
+          _this13._handleLoadingState(false);
+          // Add each result as a choice
+          parsedResults.forEach(function (result) {
+            if (result.choices) {
+              _this13._addGroup({
+                group: result,
+                id: result.id || null,
+                valueKey: value,
+                labelKey: label
+              });
+            } else {
+              _this13._addChoice({
+                value: (0, _utils.fetchFromObject)(result, value),
+                label: (0, _utils.fetchFromObject)(result, label),
+                isSelected: result.selected,
+                isDisabled: result.disabled,
+                customProperties: result.customProperties,
+                placeholder: result.placeholder
+              });
+            }
+          });
+
+          if (selectPlaceholderChoice) {
+            _this13._selectPlaceholderChoice();
+          }
+        } else {
+          // No results, remove loading state
+          _this13._handleLoadingState(false);
+        }
+      };
+    }
+  }, {
+    key: '_handleChoiceAction',
+    value: function _handleChoiceAction(activeItems, element) {
+      if (!activeItems || !element) {
+        return;
+      }
+
+      // If we are clicking on an option
+      var id = element.getAttribute('data-id');
+      var choice = this._store.getChoiceById(id);
+      var passedKeyCode = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
+
+      // Update choice keyCode
+      choice.keyCode = passedKeyCode;
+
+      this.passedElement.triggerEvent(_constants.EVENTS.choice, {
+        choice: choice
+      });
+
+      if (choice && !choice.selected && !choice.disabled) {
+        var canAddItem = this._canAddItem(choice.value);
+
+        if (canAddItem.response) {
+          this._addItem({
+            value: choice.value,
+            label: choice.label,
+            choiceId: choice.id,
+            groupId: choice.groupId,
+            customProperties: choice.customProperties,
+            placeholder: choice.placeholder,
+            keyCode: choice.keyCode
+          }, true);
+
+          this._triggerChange(choice.value);
+        }
+      }
+
+      this.clearInput();
+    }
+  }, {
+    key: 'ajax',
+    value: function ajax(fn) {
+      var _this14 = this;
+
+      if (!fn) {
+        return this;
+      }
+
+      requestAnimationFrame(function () {
+        return _this14._handleLoadingState(true);
+      });
+      fn(this._ajaxCallback());
+
+      return this;
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      if (!this.initialised) {
+        return;
+      }
+
+      this.passedElement.reveal();
+      this.containerOuter.unwrap(this.passedElement.element);
+      this.passedElement.options = this._presetChoices;
+
+      this.clearStore();
+
+      this.config.templates = null;
+      this.initialised = false;
+    }
+  }, {
+    key: '_handleButtonAction',
+    value: function _handleButtonAction(activeItems, element) {
+      if (!activeItems || !element || !this.config.removeItems || !this.config.removeItemButton) {
+        return;
+      }
+
+      var itemId = element.parentNode.getAttribute('data-id');
+      var itemToRemove = activeItems.find(function (item) {
+        return item.id === parseInt(itemId, 10);
+      });
+
+      // Remove item associated with button
+      this._removeItem(itemToRemove);
+      this._triggerChange(itemToRemove.value);
+    }
+  }, {
+    key: '_selectPlaceholderChoice',
+    value: function _selectPlaceholderChoice() {
+      var placeholderChoice = this._store.placeholderChoice;
+
+      if (placeholderChoice) {
+        this._addItem({
+          value: placeholderChoice.value,
+          label: placeholderChoice.label,
+          choiceId: placeholderChoice.id,
+          groupId: placeholderChoice.groupId,
+          placeholder: placeholderChoice.placeholder
+        }, true);
+
+        this._triggerChange(placeholderChoice.value);
+      }
     }
   }]);
 
@@ -2723,29 +3395,6 @@ var ChoicesSelect = function () {
 }();
 
 exports.default = ChoicesSelect;
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var clearAll = exports.clearAll = function clearAll() {
-  return {
-    type: 'CLEAR_ALL'
-  };
-};
-
-var resetTo = exports.resetTo = function resetTo(state) {
-  return {
-    type: 'RESET_TO',
-    state: state
-  };
-};
 
 /***/ }),
 /* 41 */
@@ -2841,6 +3490,11 @@ var WrappedElement = function () {
       (0, _utils.dispatchEvent)(this.element, eventType, data);
     }
   }, {
+    key: 'type',
+    get: function get() {
+      return this.element.type;
+    }
+  }, {
     key: 'value',
     get: function get() {
       return this.element.value;
@@ -2870,7 +3524,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-__webpack_require__(23);
+__webpack_require__(22);
 
 var _constants = __webpack_require__(1);
 
@@ -2989,8 +3643,8 @@ __webpack_require__(47)(String, 'String', function (iterated) {
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(13);
-var defined = __webpack_require__(14);
+var toInteger = __webpack_require__(12);
+var defined = __webpack_require__(13);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -3014,13 +3668,13 @@ module.exports = function (TO_STRING) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(24);
-var $export = __webpack_require__(25);
-var redefine = __webpack_require__(28);
+var LIBRARY = __webpack_require__(23);
+var $export = __webpack_require__(24);
+var redefine = __webpack_require__(27);
 var hide = __webpack_require__(6);
-var Iterators = __webpack_require__(18);
+var Iterators = __webpack_require__(17);
 var $iterCreate = __webpack_require__(51);
-var setToStringTag = __webpack_require__(35);
+var setToStringTag = __webpack_require__(34);
 var getPrototypeOf = __webpack_require__(60);
 var ITERATOR = __webpack_require__(2)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
@@ -3088,8 +3742,8 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(9) && !__webpack_require__(26)(function () {
-  return Object.defineProperty(__webpack_require__(27)('div'), 'a', { get: function () { return 7; } }).a != 7;
+module.exports = !__webpack_require__(9) && !__webpack_require__(25)(function () {
+  return Object.defineProperty(__webpack_require__(26)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
@@ -3098,7 +3752,7 @@ module.exports = !__webpack_require__(9) && !__webpack_require__(26)(function ()
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(15);
+var isObject = __webpack_require__(14);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -3128,8 +3782,8 @@ module.exports = function (it) {
 "use strict";
 
 var create = __webpack_require__(52);
-var descriptor = __webpack_require__(16);
-var setToStringTag = __webpack_require__(35);
+var descriptor = __webpack_require__(15);
+var setToStringTag = __webpack_require__(34);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
@@ -3148,15 +3802,15 @@ module.exports = function (Constructor, NAME, next) {
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(8);
 var dPs = __webpack_require__(53);
-var enumBugKeys = __webpack_require__(34);
-var IE_PROTO = __webpack_require__(19)('IE_PROTO');
+var enumBugKeys = __webpack_require__(33);
+var IE_PROTO = __webpack_require__(18)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(27)('iframe');
+  var iframe = __webpack_require__(26)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -3213,7 +3867,7 @@ module.exports = __webpack_require__(9) ? Object.defineProperties : function def
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(55);
-var enumBugKeys = __webpack_require__(34);
+var enumBugKeys = __webpack_require__(33);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -3225,9 +3879,9 @@ module.exports = Object.keys || function keys(O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(10);
-var toIObject = __webpack_require__(30);
+var toIObject = __webpack_require__(29);
 var arrayIndexOf = __webpack_require__(57)(false);
-var IE_PROTO = __webpack_require__(19)('IE_PROTO');
+var IE_PROTO = __webpack_require__(18)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -3248,7 +3902,7 @@ module.exports = function (object, names) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(31);
+var cof = __webpack_require__(30);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
@@ -3261,8 +3915,8 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(30);
-var toLength = __webpack_require__(32);
+var toIObject = __webpack_require__(29);
+var toLength = __webpack_require__(31);
 var toAbsoluteIndex = __webpack_require__(58);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
@@ -3288,7 +3942,7 @@ module.exports = function (IS_INCLUDES) {
 /* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(13);
+var toInteger = __webpack_require__(12);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -3311,8 +3965,8 @@ module.exports = document && document.documentElement;
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(10);
-var toObject = __webpack_require__(36);
-var IE_PROTO = __webpack_require__(19)('IE_PROTO');
+var toObject = __webpack_require__(35);
+var IE_PROTO = __webpack_require__(18)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -3330,12 +3984,12 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 "use strict";
 
-var ctx = __webpack_require__(29);
-var $export = __webpack_require__(25);
-var toObject = __webpack_require__(36);
+var ctx = __webpack_require__(28);
+var $export = __webpack_require__(24);
+var toObject = __webpack_require__(35);
 var call = __webpack_require__(62);
 var isArrayIter = __webpack_require__(63);
-var toLength = __webpack_require__(32);
+var toLength = __webpack_require__(31);
 var createProperty = __webpack_require__(64);
 var getIterFn = __webpack_require__(65);
 
@@ -3391,7 +4045,7 @@ module.exports = function (iterator, fn, value, entries) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators = __webpack_require__(18);
+var Iterators = __webpack_require__(17);
 var ITERATOR = __webpack_require__(2)('iterator');
 var ArrayProto = Array.prototype;
 
@@ -3407,7 +4061,7 @@ module.exports = function (it) {
 "use strict";
 
 var $defineProperty = __webpack_require__(7);
-var createDesc = __webpack_require__(16);
+var createDesc = __webpack_require__(15);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -3421,7 +4075,7 @@ module.exports = function (object, index, value) {
 
 var classof = __webpack_require__(66);
 var ITERATOR = __webpack_require__(2)('iterator');
-var Iterators = __webpack_require__(18);
+var Iterators = __webpack_require__(17);
 module.exports = __webpack_require__(4).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
@@ -3434,7 +4088,7 @@ module.exports = __webpack_require__(4).getIteratorMethod = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(31);
+var cof = __webpack_require__(30);
 var TAG = __webpack_require__(2)('toStringTag');
 // ES3 wrong here
 var ARG = cof(function () { return arguments; }()) == 'Arguments';
@@ -3549,9 +4203,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-__webpack_require__(23);
+__webpack_require__(22);
 
-var _store = __webpack_require__(20);
+var _store = __webpack_require__(19);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -3559,13 +4213,15 @@ var _components = __webpack_require__(5);
 
 var _constants = __webpack_require__(1);
 
-var _templates = __webpack_require__(21);
+var _templates = __webpack_require__(20);
 
 var _choices = __webpack_require__(11);
 
-var _items = __webpack_require__(12);
+var _items = __webpack_require__(21);
 
-var _groups = __webpack_require__(22);
+var _groups = __webpack_require__(38);
+
+var _misc = __webpack_require__(39);
 
 var _utils = __webpack_require__(0);
 
@@ -3583,7 +4239,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 var ChoicesInput = function () {
   function ChoicesInput(element, config) {
+    var _this = this;
+
     _classCallCheck(this, ChoicesInput);
+
+    this._onEnterKey = function (_ref) {
+      var target = _ref.target;
+
+      var hasActiveDropdown = _this.dropdown.isActive;
+      var activeItems = _this._store.activeItems;
+      // If enter key is pressed and the input has a value
+      if (target.value) {
+        var value = _this.input.value;
+        var canAddItem = _this._canAddItem(activeItems, value);
+
+        // All is good, add
+        if (canAddItem.response) {
+          _this.hideDropdown(true);
+          _this._addItem({
+            value: value
+          });
+          _this._triggerChange(value);
+          _this.clearInput();
+        }
+      }
+
+      if (target.hasAttribute('data-button')) {
+        _this._handleButtonAction(activeItems, target);
+        event.preventDefault();
+      }
+
+      if (hasActiveDropdown) {
+        event.preventDefault();
+        var highlighted = _this.dropdown.getChild('.' + _this.config.classNames.highlightedState);
+
+        // If we have a highlighted choice
+        if (highlighted) {
+          // add enter keyCode value
+          if (activeItems[0]) {
+            activeItems[0].keyCode = _constants.KEY_CODES.ENTER_KEY;
+          }
+          _this._handleChoiceAction(activeItems, highlighted);
+        }
+      }
+    };
 
     this.initialised = false;
     this.config = config;
@@ -3791,44 +4490,30 @@ var ChoicesInput = function () {
   }, {
     key: 'highlightAll',
     value: function highlightAll() {
-      var _this = this;
+      var _this2 = this;
 
       this._store.items.forEach(function (item) {
-        return _this.highlightItem(item);
+        return _this2.highlightItem(item);
       });
       return this;
     }
   }, {
     key: 'unhighlightAll',
     value: function unhighlightAll() {
-      var _this2 = this;
+      var _this3 = this;
 
       this._store.items.forEach(function (item) {
-        return _this2.unhighlightItem(item);
+        return _this3.unhighlightItem(item);
       });
       return this;
     }
   }, {
     key: 'removeActiveItemsByValue',
     value: function removeActiveItemsByValue(value) {
-      var _this3 = this;
+      var _this4 = this;
 
       this._store.activeItems.filter(function (item) {
         return item.value === value;
-      }).forEach(function (item) {
-        return _this3._removeItem(item);
-      });
-
-      return this;
-    }
-  }, {
-    key: 'removeActiveItems',
-    value: function removeActiveItems(excludedId) {
-      var _this4 = this;
-
-      this._store.activeItems.filter(function (_ref) {
-        var id = _ref.id;
-        return id !== excludedId;
       }).forEach(function (item) {
         return _this4._removeItem(item);
       });
@@ -3836,18 +4521,32 @@ var ChoicesInput = function () {
       return this;
     }
   }, {
+    key: 'removeActiveItems',
+    value: function removeActiveItems(excludedId) {
+      var _this5 = this;
+
+      this._store.activeItems.filter(function (_ref2) {
+        var id = _ref2.id;
+        return id !== excludedId;
+      }).forEach(function (item) {
+        return _this5._removeItem(item);
+      });
+
+      return this;
+    }
+  }, {
     key: 'removeHighlightedItems',
     value: function removeHighlightedItems() {
-      var _this5 = this;
+      var _this6 = this;
 
       var triggerEvent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
       this._store.highlightedActiveItems.forEach(function (item) {
-        _this5._removeItem(item);
+        _this6._removeItem(item);
         // If this action was performed by the user
         // trigger the event
         if (triggerEvent) {
-          _this5._triggerChange(item.value);
+          _this6._triggerChange(item.value);
         }
       });
 
@@ -3856,21 +4555,21 @@ var ChoicesInput = function () {
   }, {
     key: 'showDropdown',
     value: function showDropdown(preventInputFocus) {
-      var _this6 = this;
+      var _this7 = this;
 
       if (this.dropdown.isActive) {
         return this;
       }
 
       requestAnimationFrame(function () {
-        _this6.dropdown.show();
-        _this6.containerOuter.open(_this6.dropdown.distanceFromTopWindow());
+        _this7.dropdown.show();
+        _this7.containerOuter.open(_this7.dropdown.distanceFromTopWindow());
 
         if (!preventInputFocus) {
-          _this6.input.focus();
+          _this7.input.focus();
         }
 
-        _this6.passedElement.triggerEvent(_constants.EVENTS.showDropdown, {});
+        _this7.passedElement.triggerEvent(_constants.EVENTS.showDropdown, {});
       });
 
       return this;
@@ -3878,22 +4577,22 @@ var ChoicesInput = function () {
   }, {
     key: 'hideDropdown',
     value: function hideDropdown(preventInputBlur) {
-      var _this7 = this;
+      var _this8 = this;
 
       if (!this.dropdown.isActive) {
         return this;
       }
 
       requestAnimationFrame(function () {
-        _this7.dropdown.hide();
-        _this7.containerOuter.close();
+        _this8.dropdown.hide();
+        _this8.containerOuter.close();
 
         if (!preventInputBlur) {
-          _this7.input.removeActiveDescendant();
-          _this7.input.blur();
+          _this8.input.removeActiveDescendant();
+          _this8.input.blur();
         }
 
-        _this7.passedElement.triggerEvent(_constants.EVENTS.hideDropdown, {});
+        _this8.passedElement.triggerEvent(_constants.EVENTS.hideDropdown, {});
       });
 
       return this;
@@ -3925,14 +4624,14 @@ var ChoicesInput = function () {
   }, {
     key: 'setValue',
     value: function setValue(args) {
-      var _this8 = this;
+      var _this9 = this;
 
       if (!this.initialised) {
         return this;
       }
 
       [].concat(_toConsumableArray(args)).forEach(function (value) {
-        return _this8._setChoiceOrItem(value);
+        return _this9._setChoiceOrItem(value);
       });
       return this;
     }
@@ -3946,7 +4645,7 @@ var ChoicesInput = function () {
   }, {
     key: '_createItemsFragment',
     value: function _createItemsFragment(items) {
-      var _this9 = this;
+      var _this10 = this;
 
       var fragment = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
@@ -3968,7 +4667,7 @@ var ChoicesInput = function () {
 
       var addItemToFragment = function addItemToFragment(item) {
         // Create new list element
-        var listItem = _this9._getTemplate('item', item, removeItemButton);
+        var listItem = _this10._getTemplate('item', item, removeItemButton);
         // Append it to list
         itemListFragment.appendChild(listItem);
       };
@@ -4010,7 +4709,7 @@ var ChoicesInput = function () {
   }, {
     key: '_handleItemAction',
     value: function _handleItemAction(activeItems, element) {
-      var _this10 = this;
+      var _this11 = this;
 
       var hasShiftKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
@@ -4025,9 +4724,9 @@ var ChoicesInput = function () {
       // unless shift is being pressed
       activeItems.forEach(function (item) {
         if (item.id === parseInt(passedId, 10) && !item.highlighted) {
-          _this10.highlightItem(item);
+          _this11.highlightItem(item);
         } else if (!hasShiftKey && item.highlighted) {
-          _this10.unhighlightItem(item);
+          _this11.unhighlightItem(item);
         }
       });
 
@@ -4187,10 +4886,93 @@ var ChoicesInput = function () {
       this.input.removeEventListeners();
     }
   }, {
+    key: '_onDirectionKey',
+    value: function _onDirectionKey(_ref3) {
+      var keyCode = _ref3.keyCode,
+          metaKey = _ref3.metaKey;
+
+      var hasActiveDropdown = this.dropdown.isActive;
+      var downKey = _constants.KEY_CODES.DOWN_KEY;
+      var pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY;
+      var pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
+
+      // If up or down key is pressed, traverse through options
+      if (hasActiveDropdown) {
+        this.showDropdown();
+
+        var directionInt = keyCode === downKey || keyCode === pageDownKey ? 1 : -1;
+        var skipKey = metaKey || keyCode === pageDownKey || keyCode === pageUpKey;
+        var selectableChoiceIdentifier = '[data-choice-selectable]';
+
+        var nextEl = void 0;
+        if (skipKey) {
+          if (directionInt > 0) {
+            nextEl = Array.from(this.dropdown.element.querySelectorAll(selectableChoiceIdentifier)).pop();
+          } else {
+            nextEl = this.dropdown.element.querySelector(selectableChoiceIdentifier);
+          }
+        } else {
+          var currentEl = this.dropdown.element.querySelector('.' + this.config.classNames.highlightedState);
+          if (currentEl) {
+            nextEl = (0, _utils.getAdjacentEl)(currentEl, selectableChoiceIdentifier, directionInt);
+          } else {
+            nextEl = this.dropdown.element.querySelector(selectableChoiceIdentifier);
+          }
+        }
+
+        if (nextEl) {
+          // We prevent default to stop the cursor moving
+          // when pressing the arrow
+          if (!(0, _utils.isScrolledIntoView)(nextEl, this.choiceList.element, directionInt)) {
+            this.choiceList.scrollToChoice(nextEl, directionInt);
+          }
+          this._highlightChoice(nextEl);
+        }
+
+        // Prevent default to maintain cursor position whilst
+        // traversing dropdown options
+        event.preventDefault();
+      }
+    }
+  }, {
+    key: '_onDeleteKey',
+    value: function _onDeleteKey(_ref4) {
+      var target = _ref4.target;
+
+      var hasFocusedInput = this.input.isFocussed;
+      var activeItems = this._store.activeItems;
+      // If backspace or delete key is pressed and the input has no value
+      if (hasFocusedInput && !target.value) {
+        this._handleBackspace(activeItems);
+        event.preventDefault();
+      }
+    }
+  }, {
+    key: '_onEscapeKey',
+    value: function _onEscapeKey() {
+      this.hideDropdown(true);
+      this.containerOuter.focus();
+    }
+  }, {
+    key: '_onAKey',
+    value: function _onAKey(_ref5) {
+      var ctrlKey = _ref5.ctrlKey,
+          metaKey = _ref5.metaKey;
+
+      var hasItems = this.itemList.hasChildren;
+      var ctrlDownKey = ctrlKey || metaKey;
+      // If CTRL + A or CMD + A have been pressed and there are items to select
+      if (ctrlDownKey && hasItems) {
+        if (this.config.removeItems && !this.input.value && this.input.element === document.activeElement) {
+          // Highlight items
+          this.highlightAll();
+        }
+      }
+    }
+  }, {
     key: '_onKeyDown',
     value: function _onKeyDown(event) {
-      var _this11 = this,
-          _keyDownActions;
+      var _keyDownActions;
 
       var target = event.target,
           keyCode = event.keyCode,
@@ -4202,135 +4984,29 @@ var ChoicesInput = function () {
         return;
       }
 
-      var activeItems = this._store.activeItems;
-      var hasFocusedInput = this.input.isFocussed;
-      var hasActiveDropdown = this.dropdown.isActive;
-      var hasItems = this.itemList.hasChildren;
-      var backKey = _constants.KEY_CODES.BACK_KEY;
-      var deleteKey = _constants.KEY_CODES.DELETE_KEY;
-      var enterKey = _constants.KEY_CODES.ENTER_KEY;
-      var aKey = _constants.KEY_CODES.A_KEY;
-      var escapeKey = _constants.KEY_CODES.ESC_KEY;
-      var upKey = _constants.KEY_CODES.UP_KEY;
-      var downKey = _constants.KEY_CODES.DOWN_KEY;
-      var pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY;
-      var pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
-      var ctrlDownKey = ctrlKey || metaKey;
-
-      var onAKey = function onAKey() {
-        // If CTRL + A or CMD + A have been pressed and there are items to select
-        if (ctrlDownKey && hasItems) {
-          if (_this11.config.removeItems && !_this11.input.value && _this11.input.element === document.activeElement) {
-            // Highlight items
-            _this11.highlightAll();
-          }
-        }
-      };
-
-      var onEnterKey = function onEnterKey() {
-        // If enter key is pressed and the input has a value
-        if (target.value) {
-          var value = _this11.input.value;
-          var canAddItem = _this11._canAddItem(activeItems, value);
-
-          // All is good, add
-          if (canAddItem.response) {
-            _this11.hideDropdown(true);
-            _this11._addItem({
-              value: value
-            });
-            _this11._triggerChange(value);
-            _this11.clearInput();
-          }
-        }
-
-        if (target.hasAttribute('data-button')) {
-          _this11._handleButtonAction(activeItems, target);
-          event.preventDefault();
-        }
-
-        if (hasActiveDropdown) {
-          event.preventDefault();
-          var highlighted = _this11.dropdown.getChild('.' + _this11.config.classNames.highlightedState);
-
-          // If we have a highlighted choice
-          if (highlighted) {
-            // add enter keyCode value
-            if (activeItems[0]) {
-              activeItems[0].keyCode = enterKey;
-            }
-            _this11._handleChoiceAction(activeItems, highlighted);
-          }
-        }
-      };
-
-      var onEscapeKey = function onEscapeKey() {
-        if (hasActiveDropdown) {
-          _this11.hideDropdown(true);
-          _this11.containerOuter.focus();
-        }
-      };
-
-      var onDirectionKey = function onDirectionKey() {
-        // If up or down key is pressed, traverse through options
-        if (hasActiveDropdown) {
-          _this11.showDropdown();
-
-          var directionInt = keyCode === downKey || keyCode === pageDownKey ? 1 : -1;
-          var skipKey = metaKey || keyCode === pageDownKey || keyCode === pageUpKey;
-          var selectableChoiceIdentifier = '[data-choice-selectable]';
-
-          var nextEl = void 0;
-          if (skipKey) {
-            if (directionInt > 0) {
-              nextEl = Array.from(_this11.dropdown.element.querySelectorAll(selectableChoiceIdentifier)).pop();
-            } else {
-              nextEl = _this11.dropdown.element.querySelector(selectableChoiceIdentifier);
-            }
-          } else {
-            var currentEl = _this11.dropdown.element.querySelector('.' + _this11.config.classNames.highlightedState);
-            if (currentEl) {
-              nextEl = (0, _utils.getAdjacentEl)(currentEl, selectableChoiceIdentifier, directionInt);
-            } else {
-              nextEl = _this11.dropdown.element.querySelector(selectableChoiceIdentifier);
-            }
-          }
-
-          if (nextEl) {
-            // We prevent default to stop the cursor moving
-            // when pressing the arrow
-            if (!(0, _utils.isScrolledIntoView)(nextEl, _this11.choiceList.element, directionInt)) {
-              _this11.choiceList.scrollToChoice(nextEl, directionInt);
-            }
-            _this11._highlightChoice(nextEl);
-          }
-
-          // Prevent default to maintain cursor position whilst
-          // traversing dropdown options
-          event.preventDefault();
-        }
-      };
-
-      var onDeleteKey = function onDeleteKey() {
-        // If backspace or delete key is pressed and the input has no value
-        if (hasFocusedInput && !target.value) {
-          _this11._handleBackspace(activeItems);
-          event.preventDefault();
-        }
-      };
+      var backKey = _constants.KEY_CODES.BACK_KEY,
+          deleteKey = _constants.KEY_CODES.DELETE_KEY,
+          enterKey = _constants.KEY_CODES.ENTER_KEY,
+          aKey = _constants.KEY_CODES.A_KEY,
+          escapeKey = _constants.KEY_CODES.ESC_KEY,
+          upKey = _constants.KEY_CODES.UP_KEY,
+          downKey = _constants.KEY_CODES.DOWN_KEY,
+          pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY,
+          pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
 
       // Map keys to key actions
-      var keyDownActions = (_keyDownActions = {}, _defineProperty(_keyDownActions, aKey, onAKey), _defineProperty(_keyDownActions, enterKey, onEnterKey), _defineProperty(_keyDownActions, escapeKey, onEscapeKey), _defineProperty(_keyDownActions, upKey, onDirectionKey), _defineProperty(_keyDownActions, pageUpKey, onDirectionKey), _defineProperty(_keyDownActions, downKey, onDirectionKey), _defineProperty(_keyDownActions, pageDownKey, onDirectionKey), _defineProperty(_keyDownActions, deleteKey, onDeleteKey), _defineProperty(_keyDownActions, backKey, onDeleteKey), _keyDownActions);
+
+      var keyDownActions = (_keyDownActions = {}, _defineProperty(_keyDownActions, aKey, this._onAKey), _defineProperty(_keyDownActions, enterKey, this._onEnterKey), _defineProperty(_keyDownActions, escapeKey, this._onEscapeKey), _defineProperty(_keyDownActions, upKey, this._onDirectionKey), _defineProperty(_keyDownActions, pageUpKey, this._onDirectionKey), _defineProperty(_keyDownActions, downKey, this._onDirectionKey), _defineProperty(_keyDownActions, pageDownKey, this._onDirectionKey), _defineProperty(_keyDownActions, deleteKey, this._onDeleteKey), _defineProperty(_keyDownActions, backKey, this._onDeleteKey), _keyDownActions);
 
       // If keycode has a function, run it
       if (keyDownActions[keyCode]) {
-        keyDownActions[keyCode]();
+        keyDownActions[keyCode]({ target: target, keyCode: keyCode, ctrlKey: ctrlKey, metaKey: metaKey });
       }
     }
   }, {
     key: '_onKeyUp',
-    value: function _onKeyUp(_ref2) {
-      var target = _ref2.target;
+    value: function _onKeyUp(_ref6) {
+      var target = _ref6.target;
 
       if (target !== this.input.element) {
         return;
@@ -4419,8 +5095,8 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_onMouseOver',
-    value: function _onMouseOver(_ref3) {
-      var target = _ref3.target;
+    value: function _onMouseOver(_ref7) {
+      var target = _ref7.target;
 
       var targetWithinDropdown = target === this.dropdown || this.dropdown.element.contains(target);
       var shouldHighlightChoice = targetWithinDropdown && target.hasAttribute('data-choice');
@@ -4431,8 +5107,8 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_onClick',
-    value: function _onClick(_ref4) {
-      var target = _ref4.target;
+    value: function _onClick(_ref8) {
+      var target = _ref8.target;
 
       if (this.containerOuter.element.contains(target)) {
         if (!this.dropdown.isActive && document.activeElement !== this.input.element) {
@@ -4451,8 +5127,8 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_onFocus',
-    value: function _onFocus(_ref5) {
-      var target = _ref5.target;
+    value: function _onFocus(_ref9) {
+      var target = _ref9.target;
 
       if (target === this.input.element) {
         this.containerOuter.addFocusState();
@@ -4460,8 +5136,8 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_onBlur',
-    value: function _onBlur(_ref6) {
-      var target = _ref6.target;
+    value: function _onBlur(_ref10) {
+      var target = _ref10.target;
 
       if (this.containerOuter.element.contains(target) && !this._isScrollingOnIe) {
         var activeItems = this._store.activeItems;
@@ -4483,6 +5159,11 @@ var ChoicesInput = function () {
         this._isScrollingOnIe = false;
         this.input.element.focus();
       }
+    }
+  }, {
+    key: '_onFormReset',
+    value: function _onFormReset() {
+      this._store.dispatch((0, _misc.resetTo)(this._initialState));
     }
   }, {
     key: '_highlightChoice',
@@ -4535,20 +5216,20 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_addItem',
-    value: function _addItem(_ref7) {
-      var value = _ref7.value,
-          _ref7$label = _ref7.label,
-          label = _ref7$label === undefined ? null : _ref7$label,
-          _ref7$choiceId = _ref7.choiceId,
-          choiceId = _ref7$choiceId === undefined ? -1 : _ref7$choiceId,
-          _ref7$groupId = _ref7.groupId,
-          groupId = _ref7$groupId === undefined ? -1 : _ref7$groupId,
-          _ref7$customPropertie = _ref7.customProperties,
-          customProperties = _ref7$customPropertie === undefined ? null : _ref7$customPropertie,
-          _ref7$placeholder = _ref7.placeholder,
-          placeholder = _ref7$placeholder === undefined ? false : _ref7$placeholder,
-          _ref7$keyCode = _ref7.keyCode,
-          keyCode = _ref7$keyCode === undefined ? null : _ref7$keyCode;
+    value: function _addItem(_ref11) {
+      var value = _ref11.value,
+          _ref11$label = _ref11.label,
+          label = _ref11$label === undefined ? null : _ref11$label,
+          _ref11$choiceId = _ref11.choiceId,
+          choiceId = _ref11$choiceId === undefined ? -1 : _ref11$choiceId,
+          _ref11$groupId = _ref11.groupId,
+          groupId = _ref11$groupId === undefined ? -1 : _ref11$groupId,
+          _ref11$customProperti = _ref11.customProperties,
+          customProperties = _ref11$customProperti === undefined ? null : _ref11$customProperti,
+          _ref11$placeholder = _ref11.placeholder,
+          placeholder = _ref11$placeholder === undefined ? false : _ref11$placeholder,
+          _ref11$keyCode = _ref11.keyCode,
+          keyCode = _ref11$keyCode === undefined ? null : _ref11$keyCode;
 
       var passedValue = (0, _utils.isType)('String', value) ? value.trim() : value;
 
@@ -4639,22 +5320,22 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_addChoice',
-    value: function _addChoice(_ref8) {
-      var value = _ref8.value,
-          _ref8$label = _ref8.label,
-          label = _ref8$label === undefined ? null : _ref8$label,
-          _ref8$isSelected = _ref8.isSelected,
-          isSelected = _ref8$isSelected === undefined ? false : _ref8$isSelected,
-          _ref8$isDisabled = _ref8.isDisabled,
-          isDisabled = _ref8$isDisabled === undefined ? false : _ref8$isDisabled,
-          _ref8$groupId = _ref8.groupId,
-          groupId = _ref8$groupId === undefined ? -1 : _ref8$groupId,
-          _ref8$customPropertie = _ref8.customProperties,
-          customProperties = _ref8$customPropertie === undefined ? null : _ref8$customPropertie,
-          _ref8$placeholder = _ref8.placeholder,
-          placeholder = _ref8$placeholder === undefined ? false : _ref8$placeholder,
-          _ref8$keyCode = _ref8.keyCode,
-          keyCode = _ref8$keyCode === undefined ? null : _ref8$keyCode;
+    value: function _addChoice(_ref12) {
+      var value = _ref12.value,
+          _ref12$label = _ref12.label,
+          label = _ref12$label === undefined ? null : _ref12$label,
+          _ref12$isSelected = _ref12.isSelected,
+          isSelected = _ref12$isSelected === undefined ? false : _ref12$isSelected,
+          _ref12$isDisabled = _ref12.isDisabled,
+          isDisabled = _ref12$isDisabled === undefined ? false : _ref12$isDisabled,
+          _ref12$groupId = _ref12.groupId,
+          groupId = _ref12$groupId === undefined ? -1 : _ref12$groupId,
+          _ref12$customProperti = _ref12.customProperties,
+          customProperties = _ref12$customProperti === undefined ? null : _ref12$customProperti,
+          _ref12$placeholder = _ref12.placeholder,
+          placeholder = _ref12$placeholder === undefined ? false : _ref12$placeholder,
+          _ref12$keyCode = _ref12.keyCode,
+          keyCode = _ref12$keyCode === undefined ? null : _ref12$keyCode;
 
       if (typeof value === 'undefined' || value === null) {
         return;
@@ -4696,15 +5377,15 @@ var ChoicesInput = function () {
     }
   }, {
     key: '_addGroup',
-    value: function _addGroup(_ref9) {
+    value: function _addGroup(_ref13) {
       var _this13 = this;
 
-      var group = _ref9.group,
-          id = _ref9.id,
-          _ref9$valueKey = _ref9.valueKey,
-          valueKey = _ref9$valueKey === undefined ? 'value' : _ref9$valueKey,
-          _ref9$labelKey = _ref9.labelKey,
-          labelKey = _ref9$labelKey === undefined ? 'label' : _ref9$labelKey;
+      var group = _ref13.group,
+          id = _ref13.id,
+          _ref13$valueKey = _ref13.valueKey,
+          valueKey = _ref13$valueKey === undefined ? 'value' : _ref13$valueKey,
+          _ref13$labelKey = _ref13.labelKey,
+          labelKey = _ref13$labelKey === undefined ? 'label' : _ref13$labelKey;
 
       var groupChoices = (0, _utils.isType)('Object', group) ? group.choices : Array.from(group.getElementsByTagName('OPTION'));
       var groupId = id || Math.floor(new Date().valueOf() * Math.random());
@@ -4921,7 +5602,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 /* harmony default export */ __webpack_exports__["a"] = (freeGlobal);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(38)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(37)))
 
 /***/ }),
 /* 71 */
@@ -4964,7 +5645,7 @@ if (typeof self !== 'undefined') {
 
 var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38), __webpack_require__(73)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37), __webpack_require__(73)(module)))
 
 /***/ }),
 /* 73 */
@@ -5034,7 +5715,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(37);
+var _redux = __webpack_require__(36);
 
 var _items = __webpack_require__(76);
 
@@ -5389,23 +6070,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _store2 = __webpack_require__(20);
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _store2 = __webpack_require__(19);
 
 var _store3 = _interopRequireDefault(_store2);
 
 var _components = __webpack_require__(5);
 
-var _choicesSelect = __webpack_require__(39);
+var _choicesSelect = __webpack_require__(40);
 
 var _choicesSelect2 = _interopRequireDefault(_choicesSelect);
 
 var _constants = __webpack_require__(1);
 
 var _choices = __webpack_require__(11);
-
-var _items = __webpack_require__(12);
-
-var _groups = __webpack_require__(22);
 
 var _utils = __webpack_require__(0);
 
@@ -5486,23 +6165,6 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       }
     }
   }, {
-    key: 'destroy',
-    value: function destroy() {
-      if (!this.initialised) {
-        return;
-      }
-
-      this._removeEventListeners();
-      this.passedElement.reveal();
-      this.containerOuter.unwrap(this.passedElement.element);
-      this.passedElement.options = this._presetChoices;
-
-      this.clearStore();
-
-      this.config.templates = null;
-      this.initialised = false;
-    }
-  }, {
     key: 'enable',
     value: function enable() {
       this.passedElement.enable();
@@ -5549,97 +6211,9 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       this._prevState = this._currentState;
     }
   }, {
-    key: 'setChoiceByValue',
-    value: function setChoiceByValue(value) {
-      var _this2 = this;
-
-      // If only one value has been passed, convert to array
-      var choiceValue = (0, _utils.isType)('Array', value) ? value : [value];
-
-      // Loop through each value and
-      choiceValue.forEach(function (val) {
-        return _this2._findAndSelectChoiceByValue(val);
-      });
-
-      return this;
-    }
-  }, {
-    key: 'setChoices',
-    value: function setChoices() {
-      var choices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-      var _this3 = this;
-
-      var label = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-      var replaceChoices = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-
-      if (!choices.length || !value) {
-        return this;
-      }
-
-      // Clear choices if needed
-      if (replaceChoices) {
-        this._clearChoices();
-      }
-
-      this.containerOuter.removeLoadingState();
-      var addGroupsAndChoices = function addGroupsAndChoices(groupOrChoice) {
-        if (groupOrChoice.choices) {
-          _this3._addGroup({
-            group: groupOrChoice,
-            id: groupOrChoice.id || null,
-            valueKey: value,
-            labelKey: label
-          });
-        } else {
-          _this3._addChoice({
-            value: groupOrChoice[value],
-            label: groupOrChoice[label],
-            isSelected: groupOrChoice.selected,
-            isDisabled: groupOrChoice.disabled,
-            customProperties: groupOrChoice.customProperties,
-            placeholder: groupOrChoice.placeholder
-          });
-        }
-      };
-
-      choices.forEach(addGroupsAndChoices);
-
-      return this;
-    }
-  }, {
-    key: 'clearInput',
-    value: function clearInput() {
-      this.input.clear();
-
-      if (this._canSearch) {
-        this._isSearching = false;
-        this._store.dispatch((0, _choices.activateChoices)(true));
-      }
-
-      return this;
-    }
-  }, {
-    key: 'ajax',
-    value: function ajax(fn) {
-      var _this4 = this;
-
-      if (!fn) {
-        return this;
-      }
-
-      requestAnimationFrame(function () {
-        return _this4._handleLoadingState(true);
-      });
-      fn(this._ajaxCallback());
-
-      return this;
-    }
-  }, {
     key: '_createGroupsFragment',
     value: function _createGroupsFragment(groups, choices, fragment) {
-      var _this5 = this;
+      var _this2 = this;
 
       var groupFragment = fragment || document.createDocumentFragment();
       var getGroupChoices = function getGroupChoices(group) {
@@ -5656,9 +6230,9 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       groups.forEach(function (group) {
         var groupChoices = getGroupChoices(group);
         if (groupChoices.length >= 1) {
-          var dropdownGroup = _this5._getTemplate('choiceGroup', group);
+          var dropdownGroup = _this2._getTemplate('choiceGroup', group);
           groupFragment.appendChild(dropdownGroup);
-          _this5._createChoicesFragment(groupChoices, groupFragment, true);
+          _this2._createChoicesFragment(groupChoices, groupFragment, true);
         }
       });
 
@@ -5667,7 +6241,7 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
   }, {
     key: '_createChoicesFragment',
     value: function _createChoicesFragment(choices, fragment) {
-      var _this6 = this;
+      var _this3 = this;
 
       var withinGroup = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
@@ -5682,7 +6256,7 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       var appendChoice = function appendChoice(choice) {
         var shouldRender = renderSelectedChoices === 'auto' ? !choice.selected : true;
         if (shouldRender) {
-          var dropdownItem = _this6._getTemplate('choice', choice, _this6.config.itemSelectText);
+          var dropdownItem = _this3._getTemplate('choice', choice, _this3.config.itemSelectText);
           choicesFragment.appendChild(dropdownItem);
         }
       };
@@ -5730,110 +6304,23 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       return choicesFragment;
     }
   }, {
-    key: '_createItemsFragment',
-    value: function _createItemsFragment(items) {
-      var _this7 = this;
-
-      var fragment = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      // Create fragment to add elements to
-      var removeItemButton = this.config.removeItemButton;
-
-      var itemListFragment = fragment || document.createDocumentFragment();
-
-      // Update the options of the hidden input
-      this.passedElement.options = items;
-
-      var addItemToFragment = function addItemToFragment(item) {
-        // Create new list element
-        var listItem = _this7._getTemplate('item', item, removeItemButton);
-        // Append it to list
-        itemListFragment.appendChild(listItem);
-      };
-
-      // Add each list item to list
-      items.forEach(function (item) {
-        return addItemToFragment(item);
-      });
-
-      return itemListFragment;
-    }
-  }, {
-    key: '_selectPlaceholderChoice',
-    value: function _selectPlaceholderChoice() {
-      var placeholderChoice = this._store.placeholderChoice;
-
-      if (placeholderChoice) {
-        this._addItem({
-          value: placeholderChoice.value,
-          label: placeholderChoice.label,
-          choiceId: placeholderChoice.id,
-          groupId: placeholderChoice.groupId,
-          placeholder: placeholderChoice.placeholder
-        });
-
-        this._triggerChange(placeholderChoice.value);
-      }
-    }
-  }, {
     key: '_handleButtonAction',
     value: function _handleButtonAction(activeItems, element) {
       if (!activeItems || !element || !this.config.removeItems || !this.config.removeItemButton) {
         return;
       }
 
-      var itemId = element.parentNode.getAttribute('data-id');
-      var itemToRemove = activeItems.find(function (item) {
-        return item.id === parseInt(itemId, 10);
-      });
+      _get(ChoicesSelectOne.prototype.__proto__ || Object.getPrototypeOf(ChoicesSelectOne.prototype), '_handleButtonAction', this).call(this, activeItems, element);
 
-      // Remove item associated with button
-      this._removeItem(itemToRemove);
-      this._triggerChange(itemToRemove.value);
       this._selectPlaceholderChoice();
     }
   }, {
     key: '_handleChoiceAction',
     value: function _handleChoiceAction(activeItems, element) {
-      if (!activeItems || !element) {
-        return;
-      }
-
-      // If we are clicking on an option
-      var id = element.getAttribute('data-id');
-      var choice = this._store.getChoiceById(id);
-      var passedKeyCode = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
-      var hasActiveDropdown = this.dropdown.isActive;
-
-      // Update choice keyCode
-      choice.keyCode = passedKeyCode;
-
-      this.passedElement.triggerEvent(_constants.EVENTS.choice, {
-        choice: choice
-      });
-
-      if (choice && !choice.selected && !choice.disabled) {
-        var canAddItem = this._canAddItem(choice.value);
-
-        if (canAddItem.response) {
-          this._addItem({
-            value: choice.value,
-            label: choice.label,
-            choiceId: choice.id,
-            groupId: choice.groupId,
-            customProperties: choice.customProperties,
-            placeholder: choice.placeholder,
-            keyCode: choice.keyCode
-          });
-
-          this._triggerChange(choice.value);
-        }
-      }
-
-      this.clearInput();
+      _get(ChoicesSelectOne.prototype.__proto__ || Object.getPrototypeOf(ChoicesSelectOne.prototype), '_handleChoiceAction', this).call(this, activeItems, element);
 
       // We wont to close the dropdown if we are dealing with a single select box
-      if (hasActiveDropdown) {
+      if (this.dropdown.isActive) {
         this.hideDropdown(true);
         this.containerOuter.focus();
       }
@@ -5869,79 +6356,6 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       };
     }
   }, {
-    key: '_ajaxCallback',
-    value: function _ajaxCallback() {
-      var _this8 = this;
-
-      return function (results, value, label) {
-        if (!results || !value) {
-          return;
-        }
-
-        var parsedResults = (0, _utils.isType)('Object', results) ? [results] : results;
-
-        if (parsedResults && (0, _utils.isType)('Array', parsedResults) && parsedResults.length) {
-          // Remove loading states/text
-          _this8._handleLoadingState(false);
-          // Add each result as a choice
-          parsedResults.forEach(function (result) {
-            if (result.choices) {
-              _this8._addGroup({
-                group: result,
-                id: result.id || null,
-                valueKey: value,
-                labelKey: label
-              });
-            } else {
-              _this8._addChoice({
-                value: (0, _utils.fetchFromObject)(result, value),
-                label: (0, _utils.fetchFromObject)(result, label),
-                isSelected: result.selected,
-                isDisabled: result.disabled,
-                customProperties: result.customProperties,
-                placeholder: result.placeholder
-              });
-            }
-          });
-
-          _this8._selectPlaceholderChoice();
-        } else {
-          // No results, remove loading state
-          _this8._handleLoadingState(false);
-        }
-      };
-    }
-  }, {
-    key: '_handleSearch',
-    value: function _handleSearch(value) {
-      if (!value || !this.input.isFocussed) {
-        return;
-      }
-
-      var choices = this._store.choices;
-      var _config2 = this.config,
-          searchFloor = _config2.searchFloor,
-          searchChoices = _config2.searchChoices;
-
-      var hasUnactiveChoices = choices.some(function (option) {
-        return !option.active;
-      });
-
-      // Check that we have a value to search and the input was an alphanumeric character
-      if (value && value.length >= searchFloor) {
-        var resultCount = searchChoices ? this._searchChoices(value) : 0;
-        // Trigger search event
-        this.passedElement.triggerEvent(_constants.EVENTS.search, {
-          value: value,
-          resultCount: resultCount
-        });
-      } else if (hasUnactiveChoices) {
-        // Otherwise reset choices to active
-        this._isSearching = false;
-        this._store.dispatch((0, _choices.activateChoices)(true));
-      }
-    }
-  }, {
     key: '_addEventListeners',
     value: function _addEventListeners() {
       document.addEventListener('keyup', this._onKeyUp);
@@ -5965,32 +6379,18 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       this.input.addEventListeners();
     }
   }, {
-    key: '_removeEventListeners',
-    value: function _removeEventListeners() {
-      document.removeEventListener('keyup', this._onKeyUp);
-      document.removeEventListener('keydown', this._onKeyDown);
-      document.removeEventListener('click', this._onClick);
-      document.removeEventListener('touchmove', this._onTouchMove);
-      document.removeEventListener('touchend', this._onTouchEnd);
-      document.removeEventListener('mousedown', this._onMouseDown);
-      document.removeEventListener('mouseover', this._onMouseOver);
+    key: 'destroy',
+    value: function destroy() {
+      _get(ChoicesSelectOne.prototype.__proto__ || Object.getPrototypeOf(ChoicesSelectOne.prototype), 'destroy', this).call(this);
 
-      this.containerOuter.element.removeEventListener('focus', this._onFocus);
-      this.containerOuter.element.removeEventListener('blur', this._onBlur);
-
-      this.input.element.removeEventListener('focus', this._onFocus);
-      this.input.element.removeEventListener('blur', this._onBlur);
-
-      if (this.input.element.form) {
-        this.input.element.form.removeEventListener('reset', this._onFormReset);
+      if (this.initialised) {
+        this._removeEventListeners();
       }
-
-      this.input.removeEventListeners();
     }
   }, {
     key: '_onKeyDown',
     value: function _onKeyDown(event) {
-      var _this9 = this,
+      var _this4 = this,
           _keyDownActions;
 
       var target = event.target,
@@ -6007,13 +6407,14 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       var hasActiveDropdown = this.dropdown.isActive;
       var hasItems = this.itemList.hasChildren;
       var keyString = String.fromCharCode(keyCode);
-      var enterKey = _constants.KEY_CODES.ENTER_KEY;
-      var aKey = _constants.KEY_CODES.A_KEY;
-      var escapeKey = _constants.KEY_CODES.ESC_KEY;
-      var upKey = _constants.KEY_CODES.UP_KEY;
-      var downKey = _constants.KEY_CODES.DOWN_KEY;
-      var pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY;
-      var pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
+      var enterKey = _constants.KEY_CODES.ENTER_KEY,
+          aKey = _constants.KEY_CODES.A_KEY,
+          escapeKey = _constants.KEY_CODES.ESC_KEY,
+          upKey = _constants.KEY_CODES.UP_KEY,
+          downKey = _constants.KEY_CODES.DOWN_KEY,
+          pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY,
+          pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
+
       var ctrlDownKey = ctrlKey || metaKey;
 
       // If a user is typing and the dropdown is not active
@@ -6024,23 +6425,23 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       var onAKey = function onAKey() {
         // If CTRL + A or CMD + A have been pressed and there are items to select
         if (ctrlDownKey && hasItems) {
-          _this9._canSearch = false;
-          if (_this9.config.removeItems && !_this9.input.value && _this9.input.element === document.activeElement) {
+          _this4._canSearch = false;
+          if (_this4.config.removeItems && !_this4.input.value && _this4.input.element === document.activeElement) {
             // Highlight items
-            _this9.highlightAll();
+            _this4.highlightAll();
           }
         }
       };
 
       var onEnterKey = function onEnterKey() {
         if (target.hasAttribute('data-button')) {
-          _this9._handleButtonAction(activeItems, target);
+          _this4._handleButtonAction(activeItems, target);
           event.preventDefault();
         }
 
         if (hasActiveDropdown) {
           event.preventDefault();
-          var highlighted = _this9.dropdown.getChild('.' + _this9.config.classNames.highlightedState);
+          var highlighted = _this4.dropdown.getChild('.' + _this4.config.classNames.highlightedState);
 
           // If we have a highlighted choice
           if (highlighted) {
@@ -6048,27 +6449,27 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
             if (activeItems[0]) {
               activeItems[0].keyCode = enterKey;
             }
-            _this9._handleChoiceAction(activeItems, highlighted);
+            _this4._handleChoiceAction(activeItems, highlighted);
           }
         } else {
           // Open single select dropdown if it's not active
-          _this9.showDropdown();
+          _this4.showDropdown();
           event.preventDefault();
         }
       };
 
       var onEscapeKey = function onEscapeKey() {
         if (hasActiveDropdown) {
-          _this9.hideDropdown(true);
-          _this9.containerOuter.focus();
+          _this4.hideDropdown(true);
+          _this4.containerOuter.focus();
         }
       };
 
       var onDirectionKey = function onDirectionKey() {
         // If up or down key is pressed, traverse through options
         if (hasActiveDropdown) {
-          _this9.showDropdown();
-          _this9._canSearch = false;
+          _this4.showDropdown();
+          _this4._canSearch = false;
 
           var directionInt = keyCode === downKey || keyCode === pageDownKey ? 1 : -1;
           var skipKey = metaKey || keyCode === pageDownKey || keyCode === pageUpKey;
@@ -6077,26 +6478,26 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
           var nextEl = void 0;
           if (skipKey) {
             if (directionInt > 0) {
-              nextEl = Array.from(_this9.dropdown.element.querySelectorAll(selectableChoiceIdentifier)).pop();
+              nextEl = Array.from(_this4.dropdown.element.querySelectorAll(selectableChoiceIdentifier)).pop();
             } else {
-              nextEl = _this9.dropdown.element.querySelector(selectableChoiceIdentifier);
+              nextEl = _this4.dropdown.element.querySelector(selectableChoiceIdentifier);
             }
           } else {
-            var currentEl = _this9.dropdown.element.querySelector('.' + _this9.config.classNames.highlightedState);
+            var currentEl = _this4.dropdown.element.querySelector('.' + _this4.config.classNames.highlightedState);
             if (currentEl) {
               nextEl = (0, _utils.getAdjacentEl)(currentEl, selectableChoiceIdentifier, directionInt);
             } else {
-              nextEl = _this9.dropdown.element.querySelector(selectableChoiceIdentifier);
+              nextEl = _this4.dropdown.element.querySelector(selectableChoiceIdentifier);
             }
           }
 
           if (nextEl) {
             // We prevent default to stop the cursor moving
             // when pressing the arrow
-            if (!(0, _utils.isScrolledIntoView)(nextEl, _this9.choiceList.element, directionInt)) {
-              _this9.choiceList.scrollToChoice(nextEl, directionInt);
+            if (!(0, _utils.isScrolledIntoView)(nextEl, _this4.choiceList.element, directionInt)) {
+              _this4.choiceList.scrollToChoice(nextEl, directionInt);
             }
-            _this9._highlightChoice(nextEl);
+            _this4._highlightChoice(nextEl);
           }
 
           // Prevent default to maintain cursor position whilst
@@ -6141,13 +6542,6 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       this._canSearch = this.config.searchEnabled;
     }
   }, {
-    key: '_onTouchMove',
-    value: function _onTouchMove() {
-      if (this._wasTap === true) {
-        this._wasTap = false;
-      }
-    }
-  }, {
     key: '_onTouchEnd',
     value: function _onTouchEnd(event) {
       var target = event.target || event.touches[0].target;
@@ -6188,21 +6582,9 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       event.preventDefault();
     }
   }, {
-    key: '_onMouseOver',
-    value: function _onMouseOver(_ref2) {
-      var target = _ref2.target;
-
-      var targetWithinDropdown = target === this.dropdown || this.dropdown.element.contains(target);
-      var shouldHighlightChoice = targetWithinDropdown && target.hasAttribute('data-choice');
-
-      if (shouldHighlightChoice) {
-        this._highlightChoice(target);
-      }
-    }
-  }, {
     key: '_onClick',
-    value: function _onClick(_ref3) {
-      var target = _ref3.target;
+    value: function _onClick(_ref2) {
+      var target = _ref2.target;
 
       if (this.containerOuter.element.contains(target)) {
         if (!this.dropdown.isActive) {
@@ -6218,8 +6600,8 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
     }
   }, {
     key: '_onFocus',
-    value: function _onFocus(_ref4) {
-      var target = _ref4.target;
+    value: function _onFocus(_ref3) {
+      var target = _ref3.target;
 
       if (!this.containerOuter.element.contains(target)) {
         return;
@@ -6229,236 +6611,6 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
 
       if (target === this.input.element) {
         this.showDropdown(true);
-      }
-    }
-  }, {
-    key: '_onBlur',
-    value: function _onBlur(_ref5) {
-      var target = _ref5.target;
-
-      // If target is something that concerns us
-      if (this.containerOuter.element.contains(target) && !this._isScrollingOnIe) {
-        this.containerOuter.removeFocusState();
-        if (target === this.input.element || target === this.containerOuter.element && !this._canSearch) {
-          this.hideDropdown(true);
-        }
-      } else {
-        // On IE11, clicking the scollbar blurs our input and thus
-        // closes the dropdown. To stop this, we refocus our input
-        // if we know we are on IE *and* are scrolling.
-        this._isScrollingOnIe = false;
-        this.input.element.focus();
-      }
-    }
-  }, {
-    key: '_highlightChoice',
-    value: function _highlightChoice() {
-      var _this10 = this;
-
-      var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      var choices = Array.from(this.dropdown.element.querySelectorAll('[data-choice-selectable]'));
-
-      if (!choices.length) {
-        return;
-      }
-
-      var choiceToHighlight = el;
-      var highlightedChoices = Array.from(this.dropdown.element.querySelectorAll('.' + this.config.classNames.highlightedState));
-
-      // Remove any highlighted choices
-      highlightedChoices.forEach(function (choice) {
-        choice.classList.remove(_this10.config.classNames.highlightedState);
-        choice.setAttribute('aria-selected', 'false');
-      });
-
-      if (choiceToHighlight) {
-        this._highlightPosition = choices.indexOf(choiceToHighlight);
-      } else {
-        // Highlight choice based on last known highlight location
-        if (choices.length > this._highlightPosition) {
-          // If we have an option to highlight
-          choiceToHighlight = choices[this._highlightPosition];
-        } else {
-          // Otherwise highlight the option before
-          choiceToHighlight = choices[choices.length - 1];
-        }
-
-        if (!choiceToHighlight) {
-          choiceToHighlight = choices[0];
-        }
-      }
-
-      choiceToHighlight.classList.add(this.config.classNames.highlightedState);
-      choiceToHighlight.setAttribute('aria-selected', 'true');
-
-      if (this.dropdown.isActive) {
-        // IE11 ignores aria-label and blocks virtual keyboard
-        // if aria-activedescendant is set without a dropdown
-        this.input.setActiveDescendant(choiceToHighlight.id);
-        this.containerOuter.setActiveDescendant(choiceToHighlight.id);
-      }
-    }
-  }, {
-    key: '_addItem',
-    value: function _addItem(_ref6) {
-      var value = _ref6.value,
-          _ref6$label = _ref6.label,
-          label = _ref6$label === undefined ? null : _ref6$label,
-          _ref6$choiceId = _ref6.choiceId,
-          choiceId = _ref6$choiceId === undefined ? -1 : _ref6$choiceId,
-          _ref6$groupId = _ref6.groupId,
-          groupId = _ref6$groupId === undefined ? -1 : _ref6$groupId,
-          _ref6$customPropertie = _ref6.customProperties,
-          customProperties = _ref6$customPropertie === undefined ? null : _ref6$customPropertie,
-          _ref6$placeholder = _ref6.placeholder,
-          placeholder = _ref6$placeholder === undefined ? false : _ref6$placeholder,
-          _ref6$keyCode = _ref6.keyCode,
-          keyCode = _ref6$keyCode === undefined ? null : _ref6$keyCode;
-
-      var passedValue = (0, _utils.isType)('String', value) ? value.trim() : value;
-
-      var passedKeyCode = keyCode;
-      var passedCustomProperties = customProperties;
-      var items = this._store.items;
-      var passedLabel = label || passedValue;
-      var passedOptionId = parseInt(choiceId, 10) || -1;
-      var group = groupId >= 0 ? this._store.getGroupById(groupId) : null;
-      var id = items ? items.length + 1 : 1;
-
-      // If a prepended value has been passed, prepend it
-      if (this.config.prependValue) {
-        passedValue = this.config.prependValue + passedValue.toString();
-      }
-
-      // If an appended value has been passed, append it
-      if (this.config.appendValue) {
-        passedValue += this.config.appendValue.toString();
-      }
-
-      this._store.dispatch((0, _items.addItem)({
-        value: passedValue,
-        label: passedLabel,
-        id: id,
-        choiceId: passedOptionId,
-        groupId: groupId,
-        customProperties: customProperties,
-        placeholder: placeholder,
-        keyCode: passedKeyCode
-      }));
-
-      this.removeActiveItems(id);
-
-      // Trigger change event
-      if (group && group.value) {
-        this.passedElement.triggerEvent(_constants.EVENTS.addItem, {
-          id: id,
-          value: passedValue,
-          label: passedLabel,
-          customProperties: passedCustomProperties,
-          groupValue: group.value,
-          keyCode: passedKeyCode
-        });
-      } else {
-        this.passedElement.triggerEvent(_constants.EVENTS.addItem, {
-          id: id,
-          value: passedValue,
-          label: passedLabel,
-          customProperties: passedCustomProperties,
-          keyCode: passedKeyCode
-        });
-      }
-
-      return this;
-    }
-  }, {
-    key: '_addChoice',
-    value: function _addChoice(_ref7) {
-      var value = _ref7.value,
-          _ref7$label = _ref7.label,
-          label = _ref7$label === undefined ? null : _ref7$label,
-          _ref7$isSelected = _ref7.isSelected,
-          isSelected = _ref7$isSelected === undefined ? false : _ref7$isSelected,
-          _ref7$isDisabled = _ref7.isDisabled,
-          isDisabled = _ref7$isDisabled === undefined ? false : _ref7$isDisabled,
-          _ref7$groupId = _ref7.groupId,
-          groupId = _ref7$groupId === undefined ? -1 : _ref7$groupId,
-          _ref7$customPropertie = _ref7.customProperties,
-          customProperties = _ref7$customPropertie === undefined ? null : _ref7$customPropertie,
-          _ref7$placeholder = _ref7.placeholder,
-          placeholder = _ref7$placeholder === undefined ? false : _ref7$placeholder,
-          _ref7$keyCode = _ref7.keyCode,
-          keyCode = _ref7$keyCode === undefined ? null : _ref7$keyCode;
-
-      if (typeof value === 'undefined' || value === null) {
-        return;
-      }
-
-      // Generate unique id
-      var choices = this._store.choices;
-      var choiceLabel = label || value;
-      var choiceId = choices ? choices.length + 1 : 1;
-      var choiceElementId = this._baseId + '-' + this._idNames.itemChoice + '-' + choiceId;
-
-      this._store.dispatch((0, _choices.addChoice)({
-        value: value,
-        label: choiceLabel,
-        id: choiceId,
-        groupId: groupId,
-        disabled: isDisabled,
-        elementId: choiceElementId,
-        customProperties: customProperties,
-        placeholder: placeholder,
-        keyCode: keyCode
-      }));
-
-      if (isSelected) {
-        this._addItem({
-          value: value,
-          label: choiceLabel,
-          choiceId: choiceId,
-          customProperties: customProperties,
-          placeholder: placeholder,
-          keyCode: keyCode
-        });
-      }
-    }
-  }, {
-    key: '_addGroup',
-    value: function _addGroup(_ref8) {
-      var _this11 = this;
-
-      var group = _ref8.group,
-          id = _ref8.id,
-          _ref8$valueKey = _ref8.valueKey,
-          valueKey = _ref8$valueKey === undefined ? 'value' : _ref8$valueKey,
-          _ref8$labelKey = _ref8.labelKey,
-          labelKey = _ref8$labelKey === undefined ? 'label' : _ref8$labelKey;
-
-      var groupChoices = (0, _utils.isType)('Object', group) ? group.choices : Array.from(group.getElementsByTagName('OPTION'));
-      var groupId = id || Math.floor(new Date().valueOf() * Math.random());
-      var isDisabled = group.disabled ? group.disabled : false;
-
-      if (groupChoices) {
-        this._store.dispatch((0, _groups.addGroup)(group.label, groupId, true, isDisabled));
-
-        var addGroupChoices = function addGroupChoices(choice) {
-          var isOptDisabled = choice.disabled || choice.parentNode && choice.parentNode.disabled;
-
-          _this11._addChoice({
-            value: choice[valueKey],
-            label: (0, _utils.isType)('Object', choice) ? choice[labelKey] : choice.innerHTML,
-            isSelected: choice.selected,
-            isDisabled: isOptDisabled,
-            groupId: groupId,
-            customProperties: choice.customProperties,
-            placeholder: choice.placeholder
-          });
-        };
-
-        groupChoices.forEach(addGroupChoices);
-      } else {
-        this._store.dispatch((0, _groups.addGroup)(group.label, group.id, false, group.disabled));
       }
     }
   }, {
@@ -6521,14 +6673,17 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       this.containerInner.element.appendChild(this.itemList.element);
 
       this.dropdown.element.appendChild(this.choiceList.element);
-      this.dropdown.element.insertBefore(this.input.element, this.dropdown.element.firstChild);
+
+      if (this.config.searchEnabled) {
+        this.dropdown.element.insertBefore(this.input.element, this.dropdown.element.firstChild);
+      }
 
       this._addPredefinedChoices();
     }
   }, {
     key: '_addPredefinedChoices',
     value: function _addPredefinedChoices() {
-      var _this12 = this;
+      var _this5 = this;
 
       var passedGroups = this.passedElement.optionGroups;
 
@@ -6549,7 +6704,7 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
         }
 
         passedGroups.forEach(function (group) {
-          return _this12._addGroup({
+          return _this5._addGroup({
             group: group,
             id: group.id || null
           });
@@ -6588,7 +6743,7 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
           // If the choice is actually a group
 
           if (choice.choices) {
-            _this12._addGroup({
+            _this5._addGroup({
               group: choice,
               id: choice.id || null
             });
@@ -6600,7 +6755,7 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
             var isSelected = shouldPreselect ? true : choice.selected;
             var isDisabled = shouldPreselect ? false : choice.disabled;
 
-            _this12._addChoice({
+            _this5._addChoice({
               value: value,
               label: label,
               isSelected: isSelected,
@@ -6618,91 +6773,9 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
       }
     }
   }, {
-    key: '_addPredefinedItems',
-    value: function _addPredefinedItems() {
-      var _this13 = this;
-
-      var handlePresetItem = function handlePresetItem(item) {
-        var itemType = (0, _utils.getType)(item);
-        if (itemType === 'Object' && item.value) {
-          _this13._addItem({
-            value: item.value,
-            label: item.label,
-            choiceId: item.id,
-            customProperties: item.customProperties,
-            placeholder: item.placeholder
-          });
-        } else if (itemType === 'String') {
-          _this13._addItem({
-            value: item
-          });
-        }
-      };
-
-      this._presetItems.forEach(function (item) {
-        return handlePresetItem(item);
-      });
-    }
-  }, {
-    key: '_setChoiceOrItem',
-    value: function _setChoiceOrItem(item) {
-      var _this14 = this;
-
-      var itemType = (0, _utils.getType)(item).toLowerCase();
-      var handleType = {
-        object: function object() {
-          if (!item.value) {
-            return;
-          }
-
-          _this14._addChoice({
-            value: item.value,
-            label: item.label,
-            isSelected: true,
-            isDisabled: false,
-            customProperties: item.customProperties,
-            placeholder: item.placeholder
-          });
-        },
-        string: function string() {
-          _this14._addChoice({
-            value: item,
-            label: item,
-            isSelected: true,
-            isDisabled: false
-          });
-        }
-      };
-
-      handleType[itemType]();
-    }
-  }, {
-    key: '_findAndSelectChoiceByValue',
-    value: function _findAndSelectChoiceByValue(val) {
-      var _this15 = this;
-
-      var choices = this._store.choices;
-      // Check 'value' property exists and the choice isn't already selected
-      var foundChoice = choices.find(function (choice) {
-        return _this15.config.itemComparer(choice.value, val);
-      });
-
-      if (foundChoice && !foundChoice.selected) {
-        this._addItem({
-          value: foundChoice.value,
-          label: foundChoice.label,
-          id: foundChoice.id,
-          groupId: foundChoice.groupId,
-          customProperties: foundChoice.customProperties,
-          placeholder: foundChoice.placeholder,
-          keyCode: foundChoice.keyCode
-        });
-      }
-    }
-  }, {
     key: '_renderChoices',
     value: function _renderChoices() {
-      var _this16 = this;
+      var _this6 = this;
 
       var _store = this._store,
           activeGroups = _store.activeGroups,
@@ -6714,7 +6787,7 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
 
       if (this.config.resetScrollPosition) {
         requestAnimationFrame(function () {
-          return _this16.choiceList.scrollToTop();
+          return _this6.choiceList.scrollToTop();
         });
       }
 
@@ -6761,23 +6834,6 @@ var ChoicesSelectOne = function (_ChoicesSelect) {
         }
 
         this.choiceList.append(dropdownItem);
-      }
-    }
-  }, {
-    key: '_renderItems',
-    value: function _renderItems() {
-      var activeItems = this._store.activeItems || [];
-      this.itemList.clear();
-
-      if (activeItems.length) {
-        // Create a fragment to store our list items
-        // (so we don't have to update the DOM for each item)
-        var itemListFragment = this._createItemsFragment(activeItems);
-
-        // If we have items to add, append them
-        if (itemListFragment.childNodes) {
-          this.itemList.append(itemListFragment);
-        }
       }
     }
   }]);
@@ -7801,13 +7857,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _store2 = __webpack_require__(20);
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _store2 = __webpack_require__(19);
 
 var _store3 = _interopRequireDefault(_store2);
 
 var _components = __webpack_require__(5);
 
-var _choicesSelect = __webpack_require__(39);
+var _choicesSelect = __webpack_require__(40);
 
 var _choicesSelect2 = _interopRequireDefault(_choicesSelect);
 
@@ -7815,11 +7873,7 @@ var _constants = __webpack_require__(1);
 
 var _choices = __webpack_require__(11);
 
-var _items = __webpack_require__(12);
-
-var _groups = __webpack_require__(22);
-
-var _misc = __webpack_require__(40);
+var _items = __webpack_require__(21);
 
 var _utils = __webpack_require__(0);
 
@@ -7896,19 +7950,11 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
   }, {
     key: 'destroy',
     value: function destroy() {
-      if (!this.initialised) {
-        return;
+      _get(ChoicesSelectMultiple.prototype.__proto__ || Object.getPrototypeOf(ChoicesSelectMultiple.prototype), 'destroy', this).call(this);
+
+      if (this.initialised) {
+        this._removeEventListeners();
       }
-
-      this._removeEventListeners();
-      this.passedElement.reveal();
-      this.containerOuter.unwrap(this.passedElement.element);
-      this.passedElement.options = this._presetChoices;
-
-      this.clearStore();
-
-      this.config.templates = null;
-      this.initialised = false;
     }
   }, {
     key: 'enable',
@@ -8067,103 +8113,14 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       return this;
     }
   }, {
-    key: 'setChoiceByValue',
-    value: function setChoiceByValue(value) {
-      var _this6 = this;
-
-      // If only one value has been passed, convert to array
-      var choiceValue = (0, _utils.isType)('Array', value) ? value : [value];
-
-      // Loop through each value and
-      choiceValue.forEach(function (val) {
-        return _this6._findAndSelectChoiceByValue(val);
-      });
-
-      return this;
-    }
-  }, {
-    key: 'setChoices',
-    value: function setChoices() {
-      var choices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-      var _this7 = this;
-
-      var label = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-      var replaceChoices = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-
-      if (!choices.length || !value) {
-        return this;
-      }
-
-      // Clear choices if needed
-      if (replaceChoices) {
-        this._clearChoices();
-      }
-
-      this.containerOuter.removeLoadingState();
-      var addGroupsAndChoices = function addGroupsAndChoices(groupOrChoice) {
-        if (groupOrChoice.choices) {
-          _this7._addGroup({
-            group: groupOrChoice,
-            id: groupOrChoice.id || null,
-            valueKey: value,
-            labelKey: label
-          });
-        } else {
-          _this7._addChoice({
-            value: groupOrChoice[value],
-            label: groupOrChoice[label],
-            isSelected: groupOrChoice.selected,
-            isDisabled: groupOrChoice.disabled,
-            customProperties: groupOrChoice.customProperties,
-            placeholder: groupOrChoice.placeholder
-          });
-        }
-      };
-
-      choices.forEach(addGroupsAndChoices);
-
-      return this;
-    }
-  }, {
-    key: 'clearInput',
-    value: function clearInput() {
-      this.input.clear();
-      this.input.setWidth();
-
-      if (this._canSearch) {
-        this._isSearching = false;
-        this._store.dispatch((0, _choices.activateChoices)(true));
-      }
-
-      return this;
-    }
-  }, {
-    key: 'ajax',
-    value: function ajax(fn) {
-      var _this8 = this;
-
-      if (!fn) {
-        return this;
-      }
-
-      requestAnimationFrame(function () {
-        return _this8._handleLoadingState(true);
-      });
-      fn(this._ajaxCallback());
-
-      return this;
-    }
-  }, {
     key: '_createGroupsFragment',
     value: function _createGroupsFragment(groups, choices, fragment) {
-      var _this9 = this;
+      var _this6 = this;
 
       var groupFragment = fragment || document.createDocumentFragment();
       var getGroupChoices = function getGroupChoices(group) {
         return choices.filter(function (choice) {
-          return choice.groupId === group.id && (_this9.config.renderSelectedChoices === 'always' || !choice.selected);
+          return choice.groupId === group.id && (_this6.config.renderSelectedChoices === 'always' || !choice.selected);
         });
       };
 
@@ -8175,9 +8132,9 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       groups.forEach(function (group) {
         var groupChoices = getGroupChoices(group);
         if (groupChoices.length >= 1) {
-          var dropdownGroup = _this9._getTemplate('choiceGroup', group);
+          var dropdownGroup = _this6._getTemplate('choiceGroup', group);
           groupFragment.appendChild(dropdownGroup);
-          _this9._createChoicesFragment(groupChoices, groupFragment, true);
+          _this6._createChoicesFragment(groupChoices, groupFragment, true);
         }
       });
 
@@ -8186,7 +8143,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
   }, {
     key: '_createChoicesFragment',
     value: function _createChoicesFragment(choices, fragment) {
-      var _this10 = this;
+      var _this7 = this;
 
       var withinGroup = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
@@ -8201,7 +8158,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       var appendChoice = function appendChoice(choice) {
         var shouldRender = renderSelectedChoices === 'auto' ? !choice.selected : true;
         if (shouldRender) {
-          var dropdownItem = _this10._getTemplate('choice', choice, _this10.config.itemSelectText);
+          var dropdownItem = _this7._getTemplate('choice', choice, _this7.config.itemSelectText);
           choicesFragment.appendChild(dropdownItem);
         }
       };
@@ -8255,79 +8212,9 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       return choicesFragment;
     }
   }, {
-    key: '_createItemsFragment',
-    value: function _createItemsFragment(items) {
-      var _this11 = this;
-
-      var fragment = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      // Create fragment to add elements to
-      var _config2 = this.config,
-          shouldSortItems = _config2.shouldSortItems,
-          sortFn = _config2.sortFn,
-          removeItemButton = _config2.removeItemButton;
-
-      var itemListFragment = fragment || document.createDocumentFragment();
-
-      // If sorting is enabled, filter items
-      if (shouldSortItems) {
-        items.sort(sortFn);
-      }
-
-      // Update the options of the hidden input
-      this.passedElement.options = items;
-
-      var addItemToFragment = function addItemToFragment(item) {
-        // Create new list element
-        var listItem = _this11._getTemplate('item', item, removeItemButton);
-        // Append it to list
-        itemListFragment.appendChild(listItem);
-      };
-
-      // Add each list item to list
-      items.forEach(function (item) {
-        return addItemToFragment(item);
-      });
-
-      return itemListFragment;
-    }
-  }, {
-    key: '_selectPlaceholderChoice',
-    value: function _selectPlaceholderChoice() {
-      var placeholderChoice = this._store.placeholderChoice;
-
-      if (placeholderChoice) {
-        this._addItem({
-          value: placeholderChoice.value,
-          label: placeholderChoice.label,
-          choiceId: placeholderChoice.id,
-          groupId: placeholderChoice.groupId,
-          placeholder: placeholderChoice.placeholder
-        });
-
-        this._triggerChange(placeholderChoice.value);
-      }
-    }
-  }, {
-    key: '_handleButtonAction',
-    value: function _handleButtonAction(activeItems, element) {
-      if (!activeItems || !element || !this.config.removeItems || !this.config.removeItemButton) {
-        return;
-      }
-
-      var itemId = element.parentNode.getAttribute('data-id');
-      var itemToRemove = activeItems.find(function (item) {
-        return item.id === parseInt(itemId, 10);
-      });
-
-      // Remove item associated with button
-      this._removeItem(itemToRemove);
-      this._triggerChange(itemToRemove.value);
-    }
-  }, {
     key: '_handleItemAction',
     value: function _handleItemAction(activeItems, element) {
-      var _this12 = this;
+      var _this8 = this;
 
       var hasShiftKey = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
@@ -8342,54 +8229,15 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       // unless shift is being pressed
       activeItems.forEach(function (item) {
         if (item.id === parseInt(passedId, 10) && !item.highlighted) {
-          _this12.highlightItem(item);
+          _this8.highlightItem(item);
         } else if (!hasShiftKey && item.highlighted) {
-          _this12.unhighlightItem(item);
+          _this8.unhighlightItem(item);
         }
       });
 
       // Focus input as without focus, a user cannot do anything with a
       // highlighted item
       this.input.focus();
-    }
-  }, {
-    key: '_handleChoiceAction',
-    value: function _handleChoiceAction(activeItems, element) {
-      if (!activeItems || !element) {
-        return;
-      }
-
-      // If we are clicking on an option
-      var id = element.getAttribute('data-id');
-      var choice = this._store.getChoiceById(id);
-      var passedKeyCode = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
-
-      // Update choice keyCode
-      choice.keyCode = passedKeyCode;
-
-      this.passedElement.triggerEvent(_constants.EVENTS.choice, {
-        choice: choice
-      });
-
-      if (choice && !choice.selected && !choice.disabled) {
-        var canAddItem = this._canAddItem(activeItems, choice.value);
-
-        if (canAddItem.response) {
-          this._addItem({
-            value: choice.value,
-            label: choice.label,
-            choiceId: choice.id,
-            groupId: choice.groupId,
-            customProperties: choice.customProperties,
-            placeholder: choice.placeholder,
-            keyCode: choice.keyCode
-          });
-
-          this._triggerChange(choice.value);
-        }
-      }
-
-      this.clearInput();
     }
   }, {
     key: '_handleBackspace',
@@ -8457,77 +8305,6 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       };
     }
   }, {
-    key: '_ajaxCallback',
-    value: function _ajaxCallback() {
-      var _this13 = this;
-
-      return function (results, value, label) {
-        if (!results || !value) {
-          return;
-        }
-
-        var parsedResults = (0, _utils.isType)('Object', results) ? [results] : results;
-
-        if (parsedResults && (0, _utils.isType)('Array', parsedResults) && parsedResults.length) {
-          // Remove loading states/text
-          _this13._handleLoadingState(false);
-          // Add each result as a choice
-          parsedResults.forEach(function (result) {
-            if (result.choices) {
-              _this13._addGroup({
-                group: result,
-                id: result.id || null,
-                valueKey: value,
-                labelKey: label
-              });
-            } else {
-              _this13._addChoice({
-                value: (0, _utils.fetchFromObject)(result, value),
-                label: (0, _utils.fetchFromObject)(result, label),
-                isSelected: result.selected,
-                isDisabled: result.disabled,
-                customProperties: result.customProperties,
-                placeholder: result.placeholder
-              });
-            }
-          });
-        } else {
-          // No results, remove loading state
-          _this13._handleLoadingState(false);
-        }
-      };
-    }
-  }, {
-    key: '_handleSearch',
-    value: function _handleSearch(value) {
-      if (!value || !this.input.isFocussed) {
-        return;
-      }
-
-      var choices = this._store.choices;
-      var _config3 = this.config,
-          searchFloor = _config3.searchFloor,
-          searchChoices = _config3.searchChoices;
-
-      var hasUnactiveChoices = choices.some(function (option) {
-        return !option.active;
-      });
-
-      // Check that we have a value to search and the input was an alphanumeric character
-      if (value && value.length >= searchFloor) {
-        var resultCount = searchChoices ? this._searchChoices(value) : 0;
-        // Trigger search event
-        this.passedElement.triggerEvent(_constants.EVENTS.search, {
-          value: value,
-          resultCount: resultCount
-        });
-      } else if (hasUnactiveChoices) {
-        // Otherwise reset choices to active
-        this._isSearching = false;
-        this._store.dispatch((0, _choices.activateChoices)(true));
-      }
-    }
-  }, {
     key: '_addEventListeners',
     value: function _addEventListeners() {
       document.addEventListener('keyup', this._onKeyUp);
@@ -8570,7 +8347,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
   }, {
     key: '_onKeyDown',
     value: function _onKeyDown(event) {
-      var _this14 = this,
+      var _this9 = this,
           _keyDownActions;
 
       var target = event.target,
@@ -8588,15 +8365,16 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       var hasActiveDropdown = this.dropdown.isActive;
       var hasItems = this.itemList.hasChildren;
       var keyString = String.fromCharCode(keyCode);
-      var backKey = _constants.KEY_CODES.BACK_KEY;
-      var deleteKey = _constants.KEY_CODES.DELETE_KEY;
-      var enterKey = _constants.KEY_CODES.ENTER_KEY;
-      var aKey = _constants.KEY_CODES.A_KEY;
-      var escapeKey = _constants.KEY_CODES.ESC_KEY;
-      var upKey = _constants.KEY_CODES.UP_KEY;
-      var downKey = _constants.KEY_CODES.DOWN_KEY;
-      var pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY;
-      var pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
+      var backKey = _constants.KEY_CODES.BACK_KEY,
+          deleteKey = _constants.KEY_CODES.DELETE_KEY,
+          enterKey = _constants.KEY_CODES.ENTER_KEY,
+          aKey = _constants.KEY_CODES.A_KEY,
+          escapeKey = _constants.KEY_CODES.ESC_KEY,
+          upKey = _constants.KEY_CODES.UP_KEY,
+          downKey = _constants.KEY_CODES.DOWN_KEY,
+          pageUpKey = _constants.KEY_CODES.PAGE_UP_KEY,
+          pageDownKey = _constants.KEY_CODES.PAGE_DOWN_KEY;
+
       var ctrlDownKey = ctrlKey || metaKey;
 
       // If a user is typing and the dropdown is not active
@@ -8607,23 +8385,23 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       var onAKey = function onAKey() {
         // If CTRL + A or CMD + A have been pressed and there are items to select
         if (ctrlDownKey && hasItems) {
-          _this14._canSearch = false;
-          if (_this14.config.removeItems && !_this14.input.value && _this14.input.element === document.activeElement) {
+          _this9._canSearch = false;
+          if (_this9.config.removeItems && !_this9.input.value && _this9.input.element === document.activeElement) {
             // Highlight items
-            _this14.highlightAll();
+            _this9.highlightAll();
           }
         }
       };
 
       var onEnterKey = function onEnterKey() {
         if (target.hasAttribute('data-button')) {
-          _this14._handleButtonAction(activeItems, target);
+          _this9._handleButtonAction(activeItems, target);
           event.preventDefault();
         }
 
         if (hasActiveDropdown) {
           event.preventDefault();
-          var highlighted = _this14.dropdown.getChild('.' + _this14.config.classNames.highlightedState);
+          var highlighted = _this9.dropdown.getChild('.' + _this9.config.classNames.highlightedState);
 
           // If we have a highlighted choice
           if (highlighted) {
@@ -8631,23 +8409,23 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
             if (activeItems[0]) {
               activeItems[0].keyCode = enterKey;
             }
-            _this14._handleChoiceAction(activeItems, highlighted);
+            _this9._handleChoiceAction(activeItems, highlighted);
           }
         }
       };
 
       var onEscapeKey = function onEscapeKey() {
         if (hasActiveDropdown) {
-          _this14.hideDropdown(true);
-          _this14.containerOuter.focus();
+          _this9.hideDropdown(true);
+          _this9.containerOuter.focus();
         }
       };
 
       var onDirectionKey = function onDirectionKey() {
         // If up or down key is pressed, traverse through options
         if (hasActiveDropdown) {
-          _this14.showDropdown();
-          _this14._canSearch = false;
+          _this9.showDropdown();
+          _this9._canSearch = false;
 
           var directionInt = keyCode === downKey || keyCode === pageDownKey ? 1 : -1;
           var skipKey = metaKey || keyCode === pageDownKey || keyCode === pageUpKey;
@@ -8656,26 +8434,26 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
           var nextEl = void 0;
           if (skipKey) {
             if (directionInt > 0) {
-              nextEl = Array.from(_this14.dropdown.element.querySelectorAll(selectableChoiceIdentifier)).pop();
+              nextEl = Array.from(_this9.dropdown.element.querySelectorAll(selectableChoiceIdentifier)).pop();
             } else {
-              nextEl = _this14.dropdown.element.querySelector(selectableChoiceIdentifier);
+              nextEl = _this9.dropdown.element.querySelector(selectableChoiceIdentifier);
             }
           } else {
-            var currentEl = _this14.dropdown.element.querySelector('.' + _this14.config.classNames.highlightedState);
+            var currentEl = _this9.dropdown.element.querySelector('.' + _this9.config.classNames.highlightedState);
             if (currentEl) {
               nextEl = (0, _utils.getAdjacentEl)(currentEl, selectableChoiceIdentifier, directionInt);
             } else {
-              nextEl = _this14.dropdown.element.querySelector(selectableChoiceIdentifier);
+              nextEl = _this9.dropdown.element.querySelector(selectableChoiceIdentifier);
             }
           }
 
           if (nextEl) {
             // We prevent default to stop the cursor moving
             // when pressing the arrow
-            if (!(0, _utils.isScrolledIntoView)(nextEl, _this14.choiceList.element, directionInt)) {
-              _this14.choiceList.scrollToChoice(nextEl, directionInt);
+            if (!(0, _utils.isScrolledIntoView)(nextEl, _this9.choiceList.element, directionInt)) {
+              _this9.choiceList.scrollToChoice(nextEl, directionInt);
             }
-            _this14._highlightChoice(nextEl);
+            _this9._highlightChoice(nextEl);
           }
 
           // Prevent default to maintain cursor position whilst
@@ -8687,7 +8465,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       var onDeleteKey = function onDeleteKey() {
         // If backspace or delete key is pressed and the input has no value
         if (hasFocusedInput && !target.value) {
-          _this14._handleBackspace(activeItems);
+          _this9._handleBackspace(activeItems);
           event.preventDefault();
         }
       };
@@ -8727,13 +8505,6 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       }
 
       this._canSearch = this.config.searchEnabled;
-    }
-  }, {
-    key: '_onTouchMove',
-    value: function _onTouchMove() {
-      if (this._wasTap === true) {
-        this._wasTap = false;
-      }
     }
   }, {
     key: '_onTouchEnd',
@@ -8788,21 +8559,9 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       event.preventDefault();
     }
   }, {
-    key: '_onMouseOver',
-    value: function _onMouseOver(_ref2) {
-      var target = _ref2.target;
-
-      var targetWithinDropdown = target === this.dropdown || this.dropdown.element.contains(target);
-      var shouldHighlightChoice = targetWithinDropdown && target.hasAttribute('data-choice');
-
-      if (shouldHighlightChoice) {
-        this._highlightChoice(target);
-      }
-    }
-  }, {
     key: '_onClick',
-    value: function _onClick(_ref3) {
-      var target = _ref3.target;
+    value: function _onClick(_ref2) {
+      var target = _ref2.target;
 
       if (this.containerOuter.element.contains(target)) {
         if (!this.dropdown.isActive) {
@@ -8822,8 +8581,8 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
     }
   }, {
     key: '_onFocus',
-    value: function _onFocus(_ref4) {
-      var target = _ref4.target;
+    value: function _onFocus(_ref3) {
+      var target = _ref3.target;
 
       if (target === this.input.element) {
         this.showDropdown(true);
@@ -8834,243 +8593,18 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
     }
   }, {
     key: '_onBlur',
-    value: function _onBlur(_ref5) {
-      var target = _ref5.target;
+    value: function _onBlur(_ref4) {
+      var target = _ref4.target;
 
-      // If target is something that concerns us
-      if (this.containerOuter.element.contains(target) && !this._isScrollingOnIe) {
-        var activeItems = this._store.activeItems;
-        var hasHighlightedItems = activeItems.some(function (item) {
-          return item.highlighted;
-        });
+      _get(ChoicesSelectMultiple.prototype.__proto__ || Object.getPrototypeOf(ChoicesSelectMultiple.prototype), '_onBlur', this).call(this, { target: target });
 
-        if (target === this.input.element) {
-          this.containerOuter.removeFocusState();
-          this.hideDropdown(true);
-          if (hasHighlightedItems) {
-            this.unhighlightAll();
-          }
-        }
-      } else {
-        // On IE11, clicking the scollbar blurs our input and thus
-        // closes the dropdown. To stop this, we refocus our input
-        // if we know we are on IE *and* are scrolling.
-        this._isScrollingOnIe = false;
-        this.input.element.focus();
-      }
-    }
-  }, {
-    key: '_onFormReset',
-    value: function _onFormReset() {
-      this._store.dispatch((0, _misc.resetTo)(this._initialState));
-    }
-  }, {
-    key: '_highlightChoice',
-    value: function _highlightChoice() {
-      var _this15 = this;
-
-      var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-      var choices = Array.from(this.dropdown.element.querySelectorAll('[data-choice-selectable]'));
-
-      if (!choices.length) {
-        return;
-      }
-
-      var choiceToHighlight = el;
-      var highlightedChoices = Array.from(this.dropdown.element.querySelectorAll('.' + this.config.classNames.highlightedState));
-
-      // Remove any highlighted choices
-      highlightedChoices.forEach(function (choice) {
-        choice.classList.remove(_this15.config.classNames.highlightedState);
-        choice.setAttribute('aria-selected', 'false');
+      var activeItems = this._store.activeItems;
+      var hasHighlightedItems = activeItems.some(function (item) {
+        return item.highlighted;
       });
 
-      if (choiceToHighlight) {
-        this._highlightPosition = choices.indexOf(choiceToHighlight);
-      } else {
-        // Highlight choice based on last known highlight location
-        if (choices.length > this._highlightPosition) {
-          // If we have an option to highlight
-          choiceToHighlight = choices[this._highlightPosition];
-        } else {
-          // Otherwise highlight the option before
-          choiceToHighlight = choices[choices.length - 1];
-        }
-
-        if (!choiceToHighlight) {
-          choiceToHighlight = choices[0];
-        }
-      }
-
-      choiceToHighlight.classList.add(this.config.classNames.highlightedState);
-      choiceToHighlight.setAttribute('aria-selected', 'true');
-
-      if (this.dropdown.isActive) {
-        // IE11 ignores aria-label and blocks virtual keyboard
-        // if aria-activedescendant is set without a dropdown
-        this.input.setActiveDescendant(choiceToHighlight.id);
-        this.containerOuter.setActiveDescendant(choiceToHighlight.id);
-      }
-    }
-  }, {
-    key: '_addItem',
-    value: function _addItem(_ref6) {
-      var value = _ref6.value,
-          _ref6$label = _ref6.label,
-          label = _ref6$label === undefined ? null : _ref6$label,
-          _ref6$choiceId = _ref6.choiceId,
-          choiceId = _ref6$choiceId === undefined ? -1 : _ref6$choiceId,
-          _ref6$groupId = _ref6.groupId,
-          groupId = _ref6$groupId === undefined ? -1 : _ref6$groupId,
-          _ref6$customPropertie = _ref6.customProperties,
-          customProperties = _ref6$customPropertie === undefined ? null : _ref6$customPropertie,
-          _ref6$placeholder = _ref6.placeholder,
-          placeholder = _ref6$placeholder === undefined ? false : _ref6$placeholder,
-          _ref6$keyCode = _ref6.keyCode,
-          keyCode = _ref6$keyCode === undefined ? null : _ref6$keyCode;
-
-      var passedValue = (0, _utils.isType)('String', value) ? value.trim() : value;
-
-      var passedKeyCode = keyCode;
-      var passedCustomProperties = customProperties;
-      var items = this._store.items;
-      var passedLabel = label || passedValue;
-      var passedOptionId = parseInt(choiceId, 10) || -1;
-      var group = groupId >= 0 ? this._store.getGroupById(groupId) : null;
-      var id = items ? items.length + 1 : 1;
-
-      // If a prepended value has been passed, prepend it
-      if (this.config.prependValue) {
-        passedValue = this.config.prependValue + passedValue.toString();
-      }
-
-      // If an appended value has been passed, append it
-      if (this.config.appendValue) {
-        passedValue += this.config.appendValue.toString();
-      }
-
-      this._store.dispatch((0, _items.addItem)({
-        value: passedValue,
-        label: passedLabel,
-        id: id,
-        choiceId: passedOptionId,
-        groupId: groupId,
-        customProperties: customProperties,
-        placeholder: placeholder,
-        keyCode: passedKeyCode
-      }));
-
-      // Trigger change event
-      if (group && group.value) {
-        this.passedElement.triggerEvent(_constants.EVENTS.addItem, {
-          id: id,
-          value: passedValue,
-          label: passedLabel,
-          customProperties: passedCustomProperties,
-          groupValue: group.value,
-          keyCode: passedKeyCode
-        });
-      } else {
-        this.passedElement.triggerEvent(_constants.EVENTS.addItem, {
-          id: id,
-          value: passedValue,
-          label: passedLabel,
-          customProperties: passedCustomProperties,
-          keyCode: passedKeyCode
-        });
-      }
-
-      return this;
-    }
-  }, {
-    key: '_addChoice',
-    value: function _addChoice(_ref7) {
-      var value = _ref7.value,
-          _ref7$label = _ref7.label,
-          label = _ref7$label === undefined ? null : _ref7$label,
-          _ref7$isSelected = _ref7.isSelected,
-          isSelected = _ref7$isSelected === undefined ? false : _ref7$isSelected,
-          _ref7$isDisabled = _ref7.isDisabled,
-          isDisabled = _ref7$isDisabled === undefined ? false : _ref7$isDisabled,
-          _ref7$groupId = _ref7.groupId,
-          groupId = _ref7$groupId === undefined ? -1 : _ref7$groupId,
-          _ref7$customPropertie = _ref7.customProperties,
-          customProperties = _ref7$customPropertie === undefined ? null : _ref7$customPropertie,
-          _ref7$placeholder = _ref7.placeholder,
-          placeholder = _ref7$placeholder === undefined ? false : _ref7$placeholder,
-          _ref7$keyCode = _ref7.keyCode,
-          keyCode = _ref7$keyCode === undefined ? null : _ref7$keyCode;
-
-      if (typeof value === 'undefined' || value === null) {
-        return;
-      }
-
-      // Generate unique id
-      var choices = this._store.choices;
-      var choiceLabel = label || value;
-      var choiceId = choices ? choices.length + 1 : 1;
-      var choiceElementId = this._baseId + '-' + this._idNames.itemChoice + '-' + choiceId;
-
-      this._store.dispatch((0, _choices.addChoice)({
-        value: value,
-        label: choiceLabel,
-        id: choiceId,
-        groupId: groupId,
-        disabled: isDisabled,
-        elementId: choiceElementId,
-        customProperties: customProperties,
-        placeholder: placeholder,
-        keyCode: keyCode
-      }));
-
-      if (isSelected) {
-        this._addItem({
-          value: value,
-          label: choiceLabel,
-          choiceId: choiceId,
-          customProperties: customProperties,
-          placeholder: placeholder,
-          keyCode: keyCode
-        });
-      }
-    }
-  }, {
-    key: '_addGroup',
-    value: function _addGroup(_ref8) {
-      var _this16 = this;
-
-      var group = _ref8.group,
-          id = _ref8.id,
-          _ref8$valueKey = _ref8.valueKey,
-          valueKey = _ref8$valueKey === undefined ? 'value' : _ref8$valueKey,
-          _ref8$labelKey = _ref8.labelKey,
-          labelKey = _ref8$labelKey === undefined ? 'label' : _ref8$labelKey;
-
-      var groupChoices = (0, _utils.isType)('Object', group) ? group.choices : Array.from(group.getElementsByTagName('OPTION'));
-      var groupId = id || Math.floor(new Date().valueOf() * Math.random());
-      var isDisabled = group.disabled ? group.disabled : false;
-
-      if (groupChoices) {
-        this._store.dispatch((0, _groups.addGroup)(group.label, groupId, true, isDisabled));
-
-        var addGroupChoices = function addGroupChoices(choice) {
-          var isOptDisabled = choice.disabled || choice.parentNode && choice.parentNode.disabled;
-
-          _this16._addChoice({
-            value: choice[valueKey],
-            label: (0, _utils.isType)('Object', choice) ? choice[labelKey] : choice.innerHTML,
-            isSelected: choice.selected,
-            isDisabled: isOptDisabled,
-            groupId: groupId,
-            customProperties: choice.customProperties,
-            placeholder: choice.placeholder
-          });
-        };
-
-        groupChoices.forEach(addGroupChoices);
-      } else {
-        this._store.dispatch((0, _groups.addGroup)(group.label, group.id, false, group.disabled));
+      if (hasHighlightedItems && target === this.input.element && !this._isScrollingOnIe) {
+        this.unhighlightAll();
       }
     }
   }, {
@@ -9143,7 +8677,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
   }, {
     key: '_addPredefinedChoices',
     value: function _addPredefinedChoices() {
-      var _this17 = this;
+      var _this10 = this;
 
       var passedGroups = this.passedElement.optionGroups;
 
@@ -9164,7 +8698,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
         }
 
         passedGroups.forEach(function (group) {
-          return _this17._addGroup({
+          return _this10._addGroup({
             group: group,
             id: group.id || null
           });
@@ -9199,7 +8733,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
           // If the choice is actually a group
 
           if (choice.choices) {
-            _this17._addGroup({
+            _this10._addGroup({
               group: choice,
               id: choice.id || null
             });
@@ -9207,7 +8741,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
             var isSelected = choice.selected;
             var isDisabled = choice.disabled;
 
-            _this17._addChoice({
+            _this10._addChoice({
               value: value,
               label: label,
               isSelected: isSelected,
@@ -9225,88 +8759,6 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
       }
     }
   }, {
-    key: '_addPredefinedItems',
-    value: function _addPredefinedItems() {
-      var _this18 = this;
-
-      var handlePresetItem = function handlePresetItem(item) {
-        var itemType = (0, _utils.getType)(item);
-        if (itemType === 'Object' && item.value) {
-          _this18._addItem({
-            value: item.value,
-            label: item.label,
-            choiceId: item.id,
-            customProperties: item.customProperties,
-            placeholder: item.placeholder
-          });
-        } else if (itemType === 'String') {
-          _this18._addItem({
-            value: item
-          });
-        }
-      };
-
-      this._presetItems.forEach(function (item) {
-        return handlePresetItem(item);
-      });
-    }
-  }, {
-    key: '_setChoiceOrItem',
-    value: function _setChoiceOrItem(item) {
-      var _this19 = this;
-
-      var itemType = (0, _utils.getType)(item).toLowerCase();
-      var handleType = {
-        object: function object() {
-          if (!item.value) {
-            return;
-          }
-
-          _this19._addChoice({
-            value: item.value,
-            label: item.label,
-            isSelected: true,
-            isDisabled: false,
-            customProperties: item.customProperties,
-            placeholder: item.placeholder
-          });
-        },
-        string: function string() {
-          _this19._addChoice({
-            value: item,
-            label: item,
-            isSelected: true,
-            isDisabled: false
-          });
-        }
-      };
-
-      handleType[itemType]();
-    }
-  }, {
-    key: '_findAndSelectChoiceByValue',
-    value: function _findAndSelectChoiceByValue(val) {
-      var _this20 = this;
-
-      var choices = this._store.choices;
-      // Check 'value' property exists and the choice isn't already selected
-      var foundChoice = choices.find(function (choice) {
-        return _this20.config.itemComparer(choice.value, val);
-      });
-
-      if (foundChoice && !foundChoice.selected) {
-        this._addItem({
-          value: foundChoice.value,
-          label: foundChoice.label,
-          id: foundChoice.id,
-          groupId: foundChoice.groupId,
-          customProperties: foundChoice.customProperties,
-          placeholder: foundChoice.placeholder,
-          keyCode: foundChoice.keyCode
-        });
-      }
-    }
-  }, {
     key: '_generatePlaceholderValue',
     value: function _generatePlaceholderValue() {
       return this.config.placeholder ? this.config.placeholderValue || this.passedElement.element.getAttribute('placeholder') : false;
@@ -9314,7 +8766,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
   }, {
     key: '_renderChoices',
     value: function _renderChoices() {
-      var _this21 = this;
+      var _this11 = this;
 
       var _store = this._store,
           activeGroups = _store.activeGroups,
@@ -9326,7 +8778,7 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
 
       if (this.config.resetScrollPosition) {
         requestAnimationFrame(function () {
-          return _this21.choiceList.scrollToTop();
+          return _this11.choiceList.scrollToTop();
         });
       }
 
@@ -9374,23 +8826,6 @@ var ChoicesSelectMultiple = function (_ChoicesSelect) {
         }
 
         this.choiceList.append(dropdownItem);
-      }
-    }
-  }, {
-    key: '_renderItems',
-    value: function _renderItems() {
-      var activeItems = this._store.activeItems || [];
-      this.itemList.clear();
-
-      if (activeItems.length) {
-        // Create a fragment to store our list items
-        // (so we don't have to update the DOM for each item)
-        var itemListFragment = this._createItemsFragment(activeItems);
-
-        // If we have items to add, append them
-        if (itemListFragment.childNodes) {
-          this.itemList.append(itemListFragment);
-        }
       }
     }
   }]);
@@ -10141,7 +9576,7 @@ var _wrappedElement = __webpack_require__(41);
 
 var _wrappedElement2 = _interopRequireDefault(_wrappedElement);
 
-var _templates = __webpack_require__(21);
+var _templates = __webpack_require__(20);
 
 var _templates2 = _interopRequireDefault(_templates);
 
