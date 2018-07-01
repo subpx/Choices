@@ -202,12 +202,17 @@ export const isScrolledIntoView = (el, parent, direction = 1) => {
  * @param  {String} html Initial string/html
  * @return {String}  Sanitised string
  */
-export const stripHTML = html =>
-  html
+export const stripHTML = html => {
+  if (!isType('String', html)) {
+    return html;
+  }
+
+  return html
     .replace(/&/g, '&amp;')
     .replace(/>/g, '&rt;')
     .replace(/</g, '&lt;')
     .replace(/"/g, '&quot;');
+}
 
 /**
  * Turn a string into a node
