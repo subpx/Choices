@@ -3,16 +3,28 @@ const webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client',
-    './src/scripts/choices',
-  ],
+  entry: {
+    ChoicesInput: [
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+      './src/scripts/choices-input',
+    ],
+    ChoicesSelectOne: [
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+      './src/scripts/choices-select-one',
+    ],
+    ChoicesSelectMultiple: [
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+      './src/scripts/choices-select-multiple',
+    ],
+  },
   output: {
     path: path.resolve('public'),
-    filename: 'choices.min.js',
+    filename: '[name].min.js',
     publicPath: 'http://localhost:3001/assets/scripts/',
-    library: 'Choices',
+    library: '[name]',
     libraryTarget: 'umd',
   },
   plugins: [

@@ -2,12 +2,12 @@ import { dispatchEvent, isElement } from '../lib/utils';
 
 export default class WrappedElement {
   constructor({ element, classNames }) {
-    Object.assign(this, { element, classNames });
-
     if (!isElement(element)) {
       throw new TypeError('Invalid element passed');
     }
 
+    this.element = element;
+    this.classNames = classNames;
     this.isDisabled = false;
   }
 

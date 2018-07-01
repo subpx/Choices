@@ -21,7 +21,7 @@ export default class Input {
   }
 
   set value(value) {
-    this.element.value = `${value}`;
+    this.element.value = value;
   }
 
   get value() {

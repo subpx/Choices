@@ -1,12 +1,13 @@
-import '../lib/polyfills';
-import Store from '../store/store';
-import { Dropdown, Container, Input, List, WrappedInput } from '../components';
-import { EVENTS, KEY_CODES } from '../constants';
-import { TEMPLATES } from '../templates';
-import { addChoice, clearChoices } from '../actions/choices';
-import { addItem, removeItem, highlightItem } from '../actions/items';
-import { addGroup } from '../actions/groups';
-import { resetTo } from '../actions/misc';
+import './lib/polyfills';
+import Store from './store/store';
+import ChoicesCore from './core/choices-core';
+import { Dropdown, Container, Input, List, WrappedInput } from './components';
+import { EVENTS, KEY_CODES } from './constants';
+import { TEMPLATES } from './templates';
+import { addChoice, clearChoices } from './actions/choices';
+import { addItem, removeItem, highlightItem } from './actions/items';
+import { addGroup } from './actions/groups';
+import { resetTo } from './actions/misc';
 import {
   isScrolledIntoView,
   getAdjacentEl,
@@ -20,26 +21,36 @@ import {
   isIE11,
   existsInArray,
   cloneObject,
-} from '../lib/utils';
+} from './lib/utils';
 
 /**
  * ChoicesInput
  * @author Josh Johnson<josh@joshuajohnson.co.uk>
  */
-export default class ChoicesInput {
-  constructor(element, config) {
-    this.initialised = false;
-    this.config = config;
+class ChoicesInput extends ChoicesCore {
+  constructor(element = '[data-choices-input]', userConfig = {}) {
+    super(element, userConfig);
+
+    if (isType('String', element)) {
+      const elements = Array.from(document.querySelectorAll(element));
+
+      // If there are multiple elements, create a new instance
+      // for each element besides the first one (as that already has an instance)
+      if (elements.length > 1) {
+        return this._generateInstances(elements, userConfig);
+      }
+    }
+
+    if (this._passedElement.tagName !== 'INPUT') {
+      throw new TypeError('Wrong type');
+    }
 
     if (!['auto', 'always'].includes(this.config.renderSelectedChoices)) {
       this.config.renderSelectedChoices = 'auto';
     }
 
-    this._isSelectElement =
-      this._isSelectOneElement || this._isSelectMultipleElement;
-
     this.passedElement = new WrappedInput({
-      element,
+      element: this._passedElement,
       classNames: this.config.classNames,
       delimiter: this.config.delimiter,
     });
@@ -77,9 +88,20 @@ export default class ChoicesInput {
     this._onMouseDown = this._onMouseDown.bind(this);
     this._onMouseOver = this._onMouseOver.bind(this);
     this._onFormReset = this._onFormReset.bind(this);
+    this._onEnterKey = this._onEnterKey.bind(this);
 
     // Let's go
     this.init();
+  }
+
+  _generateInstances(elements, config) {
+    return elements.reduce(
+      (instances, element) => {
+        instances.push(new ChoicesInput(element, config));
+        return instances;
+      },
+      [this],
+    );
   }
 
   init() {
@@ -633,7 +655,8 @@ export default class ChoicesInput {
     this.containerOuter.focus();
   }
 
-  _onEnterKey = ({ target }) => {
+  _onEnterKey({ target }) {
+    console.log(this);
     const hasActiveDropdown = this.dropdown.isActive;
     const activeItems = this._store.activeItems;
     // If enter key is pressed and the input has a value
@@ -672,7 +695,7 @@ export default class ChoicesInput {
         this._handleChoiceAction(activeItems, highlighted);
       }
     }
-  };
+  }
 
   _onAKey({ ctrlKey, metaKey }) {
     const hasItems = this.itemList.hasChildren;
@@ -1274,3 +1297,5 @@ export default class ChoicesInput {
     }
   }
 }
+
+module.exports = ChoicesInput;

@@ -1,23 +1,28 @@
 const path = require('path');
-const pkg = require('./package.json');
 const webpack = require('webpack');
 const WrapperPlugin = require('wrapper-webpack-plugin');
 
-const banner = `/*! ${pkg.name} v${pkg.version} | (c) ${new Date().getFullYear()} ${pkg.author} | ${pkg.homepage} */ \n`;
+const pkg = require('./package.json');
 
-module.exports = (env) => {
+const banner = `/*! ${pkg.name} v${
+  pkg.version
+} | (c) ${new Date().getFullYear()} ${pkg.author} | ${pkg.homepage} */ \n`;
+
+module.exports = env => {
   const minimize = !!(env && env.minimize);
 
   const config = {
     devtool: minimize ? false : 'cheap-module-source-map',
-    entry: [
-      './src/scripts/choices',
-    ],
+    entry: {
+      ChoicesInput: './src/scripts/choices-input',
+      ChoicesSelectOne: './src/scripts/choices-select-one',
+      ChoicesSelectMultiple: './src/scripts/choices-select-multiple',
+    },
     output: {
       path: path.join(__dirname, '/public/assets/scripts'),
-      filename: minimize ? 'choices.min.js' : 'choices.js',
+      filename: minimize ? '[name].min.js' : '[name].js',
       publicPath: '/public/assets/scripts/',
-      library: 'Choices',
+      library: '[name]',
       libraryTarget: 'umd',
       auxiliaryComment: {
         root: 'Window',
@@ -61,17 +66,19 @@ module.exports = (env) => {
   };
 
   if (minimize) {
-    config.plugins.unshift(new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      mangle: true,
-      output: {
-        comments: false,
-      },
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-      },
-    }));
+    config.plugins.unshift(
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: false,
+        mangle: true,
+        output: {
+          comments: false,
+        },
+        compress: {
+          warnings: false,
+          screw_ie8: true,
+        },
+      }),
+    );
   }
 
   return config;

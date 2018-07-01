@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js';
 
+import ChoicesCore from './choices-core';
 import { WrappedSelect } from '../components';
 import { TEMPLATES } from '../templates';
 import { EVENTS } from '../constants';
@@ -26,17 +27,20 @@ import { clearAll, resetTo } from '../actions/misc';
  * @author Josh Johnson<josh@joshuajohnson.co.uk>
  */
 
-export default class ChoicesSelect {
+export default class ChoicesSelect extends ChoicesCore {
   constructor(element, config) {
-    this.initialised = false;
-    this.config = config;
+    super(element, config);
+
+    if (this._passedElement.tagName !== 'SELECT') {
+      throw new TypeError('Wrong type');
+    }
 
     if (!['auto', 'always'].includes(this.config.renderSelectedChoices)) {
       this.config.renderSelectedChoices = 'auto';
     }
 
     this.passedElement = new WrappedSelect({
-      element,
+      element: this._passedElement,
       classNames: this.config.classNames,
     });
 

@@ -16,18 +16,20 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('Compiling bundle... 👷🏽');
   const compiler = webpack(config);
 
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: '/assets/scripts/',
-    stats: {
-      colors: true,
-    },
-  }));
+  app.use(
+    webpackDevMiddleware(compiler, {
+      publicPath: '/assets/scripts/',
+      stats: {
+        colors: true,
+      },
+    }),
+  );
 
   app.use(webpackHotMiddleware(compiler));
 }
 
 app.use(express.static(DIST_DIR));
-app.listen(PORT, (err) => {
+app.listen(PORT, err => {
   if (err) {
     console.log(err);
   }
