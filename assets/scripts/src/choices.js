@@ -29,7 +29,8 @@ import {
   sortByScore,
   generateId,
   triggerEvent,
-  findAncestorByAttrName
+  findAncestorByAttrName,
+  highlightText
 }
 from './lib/utils.js';
 import './lib/polyfills.js';
@@ -2641,7 +2642,7 @@ class Choices {
               'role="option"'
             }
             >
-            ${data.label}
+            ${highlightText(data.label,this.input.value,'choices__item__highlight')}
           </div>
         `);
       },

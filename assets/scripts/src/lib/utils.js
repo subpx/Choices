@@ -580,3 +580,10 @@ export const triggerEvent = (element, type, customArgs = null) => {
 
   return element.dispatchEvent(event);
 };
+
+export const highlightText = (content, what, spanClass) => {
+  const pattern = new RegExp('(.*)(' + what + ')(.*)','gi');
+  const replaceWith = '$1<span ' + ( spanClass ? 'class="' + spanClass + '"' : '' ) + '">$2</span>$3';
+
+  return content.replace(pattern,replaceWith);
+};

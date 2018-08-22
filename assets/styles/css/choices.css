@@ -257,6 +257,10 @@
   text-align: right;
 }
 
+.choices__list--dropdown .choices__item__highlight {
+  font-weight: 700;
+}
+
 @media (min-width: 640px) {
   .choices__list--dropdown .choices__item--selectable {
     padding-right: 100px;
@@ -268,8 +272,7 @@
     position: absolute;
     right: 10px;
     top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
   }
   [dir="rtl"] .choices__list--dropdown .choices__item--selectable {
     text-align: right;
