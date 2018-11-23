@@ -116,6 +116,7 @@ class Choices {
         activeState: 'is-active',
         focusState: 'is-focused',
         openState: 'is-open',
+        placeholderState: 'is-placeholder',
         disabledState: 'is-disabled',
         highlightedState: 'is-highlighted',
         hiddenState: 'is-hidden',
@@ -2518,16 +2519,7 @@ class Choices {
           }
         );
 
-        if (this.config.removeItemButton) {
-          localClasses = classNames(
-            globalClasses.item,
-            {
-              [globalClasses.highlightedState]: data.highlighted,
-              [globalClasses.itemSelectable]: !data.disabled,
-              [globalClasses.placeholder]: data.placeholder
-            }
-          );
-
+        if (this.config.removeItemButton && !data.placeholder) {
           return strToEl(`
             <div
               class="${localClasses}"
@@ -2805,6 +2797,13 @@ class Choices {
         const passedOptions = Array.from(this.passedElement.options);
         const filter = this.config.sortFilter;
         const allChoices = this.presetChoices;
+
+        allChoices.push({
+          value: '',
+          label: this.config.placeholderValue,
+          selected: true,
+          placeholder: true
+        });
 
         // Create array of options from option elements
         passedOptions.forEach((o) => {

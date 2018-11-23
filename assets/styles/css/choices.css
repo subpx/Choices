@@ -359,4 +359,8 @@
   opacity: .5;
 }
 
+.choices__placeholder.choices__item--choice {
+  display: none;
+}
+
 /*=====  End of Choices  ======*/

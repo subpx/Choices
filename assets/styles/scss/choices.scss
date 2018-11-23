@@ -292,6 +292,12 @@ $choices-button-offset: 8px !default;
   }
 }
 
-.#{$choices-selector}__placeholder { opacity: .5; }
+.#{$choices-selector}__placeholder {
+  opacity: .5;
+
+  &.#{$choices-selector}__item--choice {
+    display: none;
+  }
+}
 
 /*=====  End of Choices  ======*/
