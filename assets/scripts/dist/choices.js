@@ -178,6 +178,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        activeState: 'is-active',
 	        focusState: 'is-focused',
 	        openState: 'is-open',
+	        placeholderState: 'is-placeholder',
 	        disabledState: 'is-disabled',
 	        highlightedState: 'is-highlighted',
 	        hiddenState: 'is-hidden',
@@ -2649,11 +2650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	          var localClasses = (0, _classnames2.default)(globalClasses.item, (_classNames2 = {}, _defineProperty(_classNames2, globalClasses.highlightedState, data.highlighted), _defineProperty(_classNames2, globalClasses.itemSelectable, !data.highlighted), _defineProperty(_classNames2, globalClasses.placeholder, data.placeholder), _classNames2));
 
-	          if (_this22.config.removeItemButton) {
-	            var _classNames3;
-
-	            localClasses = (0, _classnames2.default)(globalClasses.item, (_classNames3 = {}, _defineProperty(_classNames3, globalClasses.highlightedState, data.highlighted), _defineProperty(_classNames3, globalClasses.itemSelectable, !data.disabled), _defineProperty(_classNames3, globalClasses.placeholder, data.placeholder), _classNames3));
-
+	          if (_this22.config.removeItemButton && !data.placeholder) {
 	            return (0, _utils.strToEl)('\n            <div\n              class="' + localClasses + '"\n              data-item\n              data-id="' + data.id + '"\n              data-value="' + data.value + '"\n              data-deletable\n              ' + (data.active ? 'aria-selected="true"' : '') + '\n              ' + (data.disabled ? 'aria-disabled="true"' : '') + '\n              >\n              ' + data.label + '<!--\n           --><button\n                type="button"\n                class="' + globalClasses.button + '"\n                data-button\n                aria-label="Remove item: \'' + data.value + '\'"\n                >\n                Remove item\n              </button>\n            </div>\n          ');
 	          }
 
@@ -2668,9 +2665,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	          return (0, _utils.strToEl)('\n          <div\n            class="' + localClasses + '"\n            data-group\n            data-id="' + data.id + '"\n            data-value="' + data.value + '"\n            role="group"\n            ' + (data.disabled ? 'aria-disabled="true"' : '') + '\n            >\n            <div class="' + globalClasses.groupHeading + '">' + data.value + '</div>\n          </div>\n        ');
 	        },
 	        choice: function choice(data) {
-	          var _classNames5;
+	          var _classNames4;
 
-	          var localClasses = (0, _classnames2.default)(globalClasses.item, globalClasses.itemChoice, (_classNames5 = {}, _defineProperty(_classNames5, globalClasses.itemDisabled, data.disabled), _defineProperty(_classNames5, globalClasses.itemSelectable, !data.disabled), _defineProperty(_classNames5, globalClasses.placeholder, data.placeholder), _classNames5));
+	          var localClasses = (0, _classnames2.default)(globalClasses.item, globalClasses.itemChoice, (_classNames4 = {}, _defineProperty(_classNames4, globalClasses.itemDisabled, data.disabled), _defineProperty(_classNames4, globalClasses.itemSelectable, !data.disabled), _defineProperty(_classNames4, globalClasses.placeholder, data.placeholder), _classNames4));
 
 	          return (0, _utils.strToEl)('\n          <div\n            class="' + localClasses + '"\n            data-select-text="' + _this22.config.itemSelectText + '"\n            data-choice\n            data-id="' + data.id + '"\n            data-value="' + data.value + '"\n            ' + (data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable') + '\n            id="' + data.elementId + '"\n            ' + (data.groupId > 0 ? 'role="treeitem"' : 'role="option"') + '\n            >\n            ' + (0, _utils.highlightText)(data.label, _this22.input.value, 'choices__item__highlight') + '\n          </div>\n        ');
 	        },
@@ -2685,11 +2682,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          return (0, _utils.strToEl)('\n          <div\n            class="' + localClasses + '"\n            aria-expanded="false"\n            >\n          </div>\n        ');
 	        },
 	        notice: function notice(label) {
-	          var _classNames6;
+	          var _classNames5;
 
 	          var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-	          var localClasses = (0, _classnames2.default)(globalClasses.item, globalClasses.itemChoice, (_classNames6 = {}, _defineProperty(_classNames6, globalClasses.noResults, type === 'no-results'), _defineProperty(_classNames6, globalClasses.noChoices, type === 'no-choices'), _classNames6));
+	          var localClasses = (0, _classnames2.default)(globalClasses.item, globalClasses.itemChoice, (_classNames5 = {}, _defineProperty(_classNames5, globalClasses.noResults, type === 'no-results'), _defineProperty(_classNames5, globalClasses.noChoices, type === 'no-choices'), _classNames5));
 
 	          return (0, _utils.strToEl)('\n          <div class="' + localClasses + '">\n            ' + label + '\n          </div>\n        ');
 	        },
@@ -2803,6 +2800,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	          var passedOptions = Array.from(this.passedElement.options);
 	          var filter = this.config.sortFilter;
 	          var allChoices = this.presetChoices;
+
+	          allChoices.push({
+	            value: '',
+	            label: this.config.placeholderValue,
+	            selected: true,
+	            placeholder: true
+	          });
 
 	          // Create array of options from option elements
 	          passedOptions.forEach(function (o) {
